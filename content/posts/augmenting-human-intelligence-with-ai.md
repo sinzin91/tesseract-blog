@@ -1,5 +1,5 @@
 ---
-title: "Augmenting Human Intelligence With Ai"
+title: "Augmenting Human Intelligence With AI"
 date: 2023-03-07T17:27:13-08:00
 draft: false
 # weight: 1

@@ -38,7 +38,7 @@ I created [SocratesGPT](https://github.com/sinzin91/socrates-gpt) to test the co
 
 ## Why?
 
-Over a year ago, I began using Anki, a spaced repetition flashcard app that helps me retain information over the long term by taking advantage of the Ebbinghaus forgetting curve. Memory is like a leaky bucket, and it was incredibly frustrating to realize I'd forgotten most of what I learned. This has enabled me to confidently tackle difficult technical topics that I would have otherwise avoided.
+Over a year ago, I began using Anki, a spaced repetition flashcard app that helps me retain information over the long term by taking advantage of the [Ebbinghaus forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). Memory is like a leaky bucket, and it was incredibly frustrating to realize I'd forgotten most of what I learned. Anki has enabled me to confidently tackle difficult technical topics that I would have otherwise avoided.
 
 One issue with Anki is that you can start to "overfit" on the questions you wrote. With Anki, you look at the card and then check the answer after trying to recall it. Once you've seen the answer, you rate how easily you were able to recall it, which determines when the question will reappear in your deck. Creating questions can be time consuming, so I've found that most of my cards end up being "cloze deletions", i.e. fill-in-the-blank. This increases the risk of memorizing the answer to the card rather than truly understanding the concept. 
 

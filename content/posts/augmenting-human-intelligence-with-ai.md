@@ -8,25 +8,24 @@ author: "Tenzin Wangdhen"
 showToc: true
 TocOpen: false
 hidemeta: false
-comments: true
+comments: false
 description: "SocrateGPT helps you learn topics better by asking you questions about it."
 disableHLJS: false # to disable highlightjs
 disableShare: false
-disableHLJS: false
 hideSummary: false
-searchHidden: true
+searchHidden: false
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
-cover:
-    image: "<image path/url>" # image path/url
-    alt: "<alt text>" # alt text
-    caption: "<text>" # display caption under cover
-    relative: false # when using page bundles set this to true
-    hidden: true # only hide on current single page
+# cover:
+#     image: "<image path/url>" # image path/url
+#     alt: "<alt text>" # alt text
+#     caption: "<text>" # display caption under cover
+#     relative: false # when using page bundles set this to true
+#     hidden: true # only hide on current single page
 editPost:
     URL: "https://github.com/sinzin91/tesseract-blog/blob/master/content"
     Text: "Suggest Changes" # edit text
@@ -34,7 +33,8 @@ editPost:
 ---
 
 ## TLDR
-I created [SocratesGPT](https://github.com/sinzin91/socrates-gpt) to test the concept of using AI to generate questions about a given text. This can help you learn topics better by asking you questions about it. I also provide some technical details on the implementation.
+
+I created [SocratesGPT](https://github.com/sinzin91/socrates-gpt) to test the concept of using AI to generate questions about a given topic. Its goal you learn topics better by asking you questions about it. I also provide some technical details on the implementation.
 
 ## Why?
 
@@ -59,8 +59,10 @@ In my prompt, I ask the model to impersonate Socrates, and generate questions ba
 
 Creating a traditional backend to power an app like this without the use of LLMs would be highly non-trivial. 
 
+
 ## "Prompt Engineering"
-Prompt engineering is process of designing effective prompts for large language models such as GPT. Effective prompts are more likely to elicit a high-quality outputs. Garbage prompt in, garbage response from the LLM.
+
+Prompt engineering is process of designing effective prompts for large language models such as GPT. Effective prompts are more likely to elicit high-quality outputs. Garbage prompt in, garbage response from the LLM.
 
 I started with a fairly simple prompt: 
 ```text
@@ -199,9 +201,14 @@ There are several limitations with the current implementation:
 -  It can take up to 20 seconds to receive a response from the API. The response time seems to increase with the size of the prompt. This can make it less engaging. Newer versions of the OpenAI API will likely have faster response times.
 - Setting `frequency_penalty` and `presense_penalty` parameters to `1` seems to result in invalid JSON. This might be because they make the model less likely to generate characters like `{` multiple times, which is required for the JSON to be valid.
 
+
 ## Future
 
-There's a few ways SocratesGPT could be improved. Users could be able to save questions, and later be quizzed on them using spaced repetition. Eventually, GPT could be "fine-tuned" to ask more effective questions. You might even be able to implement reinforcement learning from human feedback (RLHF). Students could rate the quality of questions, which is then fed back into the model. As multi-modal models mature, the AI could even generate diagrams, such as an image of a section of the brain with an arrow pointing to the area that the user is asked to label. Finally, the grounding problem should be addressed to prevent the model from "hallucinating" questions that are not in the input text.
+There's a few ways SocratesGPT could be improved. Users could be able to save questions, and later be quizzed on them using spaced repetition. Larger context windows would allow the model to create questions on entire books. Eventually, GPT could be "fine-tuned" to ask more effective questions. You might even be able to implement [reinforcement learning from human feedback (RLHF)](https://huggingface.co/blog/rlhf). Students could rate the quality of questions, which is then fed back into the model. 
 
-The "T" in GPT stands for [transformer](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model), which is currently the most powerful deep learning architecture for several tasks, including NLP. There will likely be better architectures in the future. As the cost of GPU compute decreases, larger models with many more parameters become possible. By building on improvements like these, we can create ever more advanced AI tutors. These tutors will be able to understand your learning goals and current understanding to create personalized curriculums that are just difficult enough to challenge and ensure long term retention. Advancing AI can help close the gap that MOOCs currently have difficulty filling, and help to scale education. Increased education leads to more people with advanced degrees that can help us solve some of our most pressing challenges. These are still the early days of LLMs. 
+As multi-modal models mature, the AI could even generate diagrams, such as an image of a section of the brain with an arrow pointing to the area that the user is asked to label. Finally, the grounding problem should be addressed to prevent the model from "hallucinating" questions that are not in the input text.
+
+The "T" in GPT stands for [transformer](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)), which is currently the most powerful deep learning architecture for several tasks, including NLP. There will likely be better architectures in the future. As the cost of GPU compute decreases, larger models with many more parameters become possible. By building on improvements like these, we can create ever more advanced AI tutors. These tutors will be able to understand your learning goals and current understanding to create personalized curriculums that are just difficult enough to challenge and ensure long term retention. 
+
+Advancing AI can help close the gap that MOOCs currently have difficulty filling, and help to scale education. Increased education leads to more people with advanced degrees that can help us solve some of our most pressing challenges. These are still the early days of LLMs. 
 

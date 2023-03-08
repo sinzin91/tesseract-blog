@@ -28,10 +28,13 @@ cover:
     relative: false # when using page bundles set this to true
     hidden: true # only hide on current single page
 editPost:
-    URL: "https://github.com/sinzin91/tesseract-blog/content"
+    URL: "https://github.com/sinzin91/tesseract-blog/blob/master/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 ---
+
+## TLDR
+I created [SocratesGPT](https://github.com/sinzin91/socrates-gpt) to test the concept of using AI to generate questions about a given text. This can help you learn topics better by asking you questions about it. I also provide some technical details on the implementation.
 
 ## Why?
 
@@ -44,7 +47,7 @@ What if we could use AI to help us understand a topic better?
 
 ## SocratesGPT
 
-Unless you've been living under a particularly forlorn boulder, you've heard about [[ChatGPT]]. You may not know that you can access [[GPT-3.5]] as an API. The most advanced model available via OpenAI's API is `gpt-3.5-turbo`. This space is moving fast. When I started this project, the most advanced model was `text-davinci-003` which was 10x more expensive and somewhat slower. 
+Unless you've been living under a particularly forlorn boulder, you've heard about ChatGPT. You may not know that you can access GPT-3.5 as an API. The most advanced model available via OpenAI's API is `gpt-3.5-turbo`. This space is moving fast. When I started this project, the most advanced model was `text-davinci-003` which was 10x more expensive and somewhat slower. 
 
 GPT (generative pre-trained transformer) is a type of "large language model" (LLM) (sorry about the acronyms). By using "prompt engineering", you can have the model return a structured JSON output for a given prompt, which can then be rendered in a UI. This means the app's "backend" can consist of a single prompt.
 
@@ -146,7 +149,9 @@ fetch("prompts/data.prompt")
   .then((text) => text.replace("$state", JSON.stringify(state)))
 ```
 
-After the user clicks "Generate Question", the value of `$prompt` is obtained from the prompt text area in the UI. The `$state` starts as a skeleton of the data structure provided in the training example. We call OpenAI's new `gpt-3.5-turbo` chat completions API with `data.prompt`. The JSON response contained in  `data.choices[0].message.content` is parsed to update the state and render the question in the UI. I found that the prompt in the new API needs to use single quotes instead of quotes when sent to the model, and then I have to replace the single quotes in the response with double quotes again to make it valid JSON. There's probably a cleaner way to do this. I also feed the entire prompt as the role `user`, but some parts of it may be better suited to the `system` role.
+After the user clicks "Generate Question", the value of `$prompt` is obtained from the prompt text area in the UI. The `$state` starts as a skeleton of the data structure provided in the training example. We call OpenAI's new `gpt-3.5-turbo` chat completions API with `data.prompt`. The JSON response contained in  `data.choices[0].message.content` is parsed to update the state and render the question in the UI. 
+
+I found that the prompt in the new API needs to use single quotes instead of quotes when sent to the model, and then I have to replace the single quotes in the response with double quotes again to make it valid JSON. There's probably a cleaner way to do this. I also feed the entire prompt as the role `user`, but some parts of it may be better suited to the `system` role.
 
 ```javascript
 const DEFAULT_PARAMS = {
@@ -196,7 +201,7 @@ There are several limitations with the current implementation:
 
 ## Future
 
-There's a few ways SocratesGPT could be improved. Users could be able to save questions, and later be quizzed on them using spaced repetition. Eventually, GPT could be "fine-tuned" to ask more effective questions. You might even be able to implement [[reinforcement learning from human feedback (RLHF)]]. Students could rate the quality of questions, which is then fed back into the model. As multi-modal models mature, the AI could even generate diagrams, such as an image of a section of the brain with an arrow pointing to the area that the user is asked to label. Finally, the grounding problem should be addressed to prevent the model from "hallucinating" questions that are not in the input text.
+There's a few ways SocratesGPT could be improved. Users could be able to save questions, and later be quizzed on them using spaced repetition. Eventually, GPT could be "fine-tuned" to ask more effective questions. You might even be able to implement reinforcement learning from human feedback (RLHF). Students could rate the quality of questions, which is then fed back into the model. As multi-modal models mature, the AI could even generate diagrams, such as an image of a section of the brain with an arrow pointing to the area that the user is asked to label. Finally, the grounding problem should be addressed to prevent the model from "hallucinating" questions that are not in the input text.
 
 The "T" in GPT stands for [transformer](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model), which is currently the most powerful deep learning architecture for several tasks, including NLP. There will likely be better architectures in the future. As the cost of GPU compute decreases, larger models with many more parameters become possible. By building on improvements like these, we can create ever more advanced AI tutors. These tutors will be able to understand your learning goals and current understanding to create personalized curriculums that are just difficult enough to challenge and ensure long term retention. Advancing AI can help close the gap that MOOCs currently have difficulty filling, and help to scale education. Increased education leads to more people with advanced degrees that can help us solve some of our most pressing challenges. These are still the early days of LLMs. 
 

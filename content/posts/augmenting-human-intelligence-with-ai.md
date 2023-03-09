@@ -36,6 +36,8 @@ editPost:
 
 I created [SocratesGPT](https://github.com/sinzin91/socrates-gpt) to test the concept of using AI to generate questions about a given topic. Its goal you learn topics better by asking you questions about it. I also provide some technical details on the implementation.
 
+![SocratesGPT](/images/demo.gif)
+
 ## Why?
 
 Over a year ago, I began using Anki, a spaced repetition flashcard app that helps me retain information over the long term by taking advantage of the [Ebbinghaus forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). Memory is like a leaky bucket, and it was incredibly frustrating to realize I'd forgotten most of what I learned. Anki has enabled me to confidently tackle difficult technical topics that I would have otherwise avoided.
@@ -75,14 +77,10 @@ prompt, question, answer, and correct.
 
 Eventually I had to add the following lines to get a cleaner response:
 ```text
-You are impersonating a question generator using the socratic method.
-You will be given a prompt, and you must respond with a question about that prompt.
-You cannot ask the same question twice. Try to limit the number of words in the choices to 4. 
-Maintain the state of the 'selected' field for each choice. 
-If a choice is selected, it should be marked as selected: true.
+You cannot ask the same question twice. 
+Try to limit the number of words in the choices to 4. 
+If a choice is selected, it should be marked as selected: true. 
 If a choice is not selected, it should be marked as selected: false.
-The response must be a valid json object with the following fields: prompt, question, answer, and correct.
-
 ```
 
 I had the feeling of training an overly eager genie when phrasing my prompt. When you ask a genie to stop the trolley from hitting the pedestrian, you don't want it to blow up the trolley. So you end up adding additional clauses: "err, also don't blow it up!".
@@ -102,10 +100,12 @@ current state:
 `prompt` is the text the model should generate questions on. `questions` is an array of question objects.
 
 Then I show an example prompt, and the expected response from the model: 
-``` json
+```text
 prompt: The sky is blue.
 
 new state:
+```
+```json
 {
   "counter": 1,
   "prompt": "The sky is blue.",
@@ -151,9 +151,7 @@ fetch("prompts/data.prompt")
   .then((text) => text.replace("$state", JSON.stringify(state)))
 ```
 
-After the user clicks "Generate Question", the value of `$prompt` is obtained from the prompt text area in the UI. The `$state` starts as a skeleton of the data structure provided in the training example. We call OpenAI's new `gpt-3.5-turbo` chat completions API with `data.prompt`. The JSON response contained in  `data.choices[0].message.content` is parsed to update the state and render the question in the UI. 
-
-I found that the prompt in the new API needs to use single quotes instead of quotes when sent to the model, and then I have to replace the single quotes in the response with double quotes again to make it valid JSON. There's probably a cleaner way to do this. I also feed the entire prompt as the role `user`, but some parts of it may be better suited to the `system` role.
+We have some control over the parameters of the model, such as the temperature, max tokens, and top p. I found that the model works best when the `temperature` is set to 0.3. Temperature controls the "creativity" of the model. A higher temperature means the model is more likely to generate creative responses. A lower temperature means the model is more likely to generate responses that are more likely to be correct. `frequency_penalty` sets a penalty for repeating words. `presence_penalty` sets a penalty for repeating n-grams. `top_p` sets the probability mass function cutoff.
 
 ```javascript
 const DEFAULT_PARAMS = {
@@ -164,7 +162,14 @@ const DEFAULT_PARAMS = {
   frequency_penalty: 0,
   presence_penalty: 0,
 };
+```
 
+After the user clicks "Generate Question", the value of `$prompt` is obtained from the prompt text area in the UI. The `$state` starts as a skeleton of the data structure provided in the training example. We call OpenAI's new `gpt-3.5-turbo` chat completions API with `data.prompt`. The JSON response contained in  `data.choices[0].message.content` is parsed to update the state and render the question in the UI. 
+
+I found that the prompt in the new API needs to use single quotes instead of quotes when sent to the model, and then I have to replace the single quotes in the response with double quotes again to make it valid JSON. There's probably a cleaner way to do this. I also feed the entire prompt as the role `user`, but some parts of it may be better suited to the `system` role.
+
+
+```javascript
 const params = {
   ...DEFAULT_PARAMS,
   messages: [{ role: "user", content: prompt }],

@@ -1,4 +1,0 @@
-baseURL = 'https://tesseract-blog.netlify.app/'
-languageCode = 'en-us'
-title = "Tenzin Wangdhen's Blog"
-theme = 'PaperMod'

@@ -49,7 +49,7 @@ What if we could use AI to help us understand a topic better?
 
 ## SocratesGPT
 
-Unless you've been living under a particularly forlorn boulder, you've heard about ChatGPT. You may not know that you can access GPT-3.5 as an API. The most advanced model available via OpenAI's API is `gpt-3.5-turbo`. This space is moving fast. When I started this project, the most advanced model was `text-davinci-003` which was 10x more expensive and somewhat slower. 
+Unless you've been living under a particularly forlorn boulder, you've heard about ChatGPT. You may not know that you can access GPT-3.5 as an API. The most advanced model available via OpenAI's API is `gpt-3.5-turbo`. This space is moving fast. When I started this project, the most advanced model was `text-davinci-003` which was 10x more expensive and somewhat slower. Edit: now GPT-4 is out.
 
 GPT (generative pre-trained transformer) is a type of "large language model" (LLM) (sorry about the acronyms). By using "prompt engineering", you can have the model return a structured JSON output for a given prompt, which can then be rendered in a UI. This means the app's "backend" can consist of a single prompt.
 
@@ -64,7 +64,7 @@ Creating a traditional backend to power an app like this without the use of LLMs
 
 ## "Prompt Engineering"
 
-Prompt engineering is process of designing effective prompts for large language models such as GPT. Effective prompts are more likely to elicit high-quality outputs. Garbage prompt in, garbage response from the LLM.
+Prompt engineering is the process of designing effective prompts for large language models such as GPT. Effective prompts are more likely to elicit high-quality outputs. Garbage prompt in, garbage response from the LLM.
 
 I started with a fairly simple prompt: 
 ```text
@@ -83,7 +83,7 @@ If a choice is selected, it should be marked as selected: true.
 If a choice is not selected, it should be marked as selected: false.
 ```
 
-I had the feeling of training an overly eager genie when phrasing my prompt. When you ask a genie to stop the trolley from hitting the pedestrian, you don't want it to blow up the trolley. So you end up adding additional clauses: "err, also don't blow it up!".
+I had the feeling of training an overly eager genie when phrasing my prompt. When you ask a genie to stop the trolley from hitting the pedestrian, the genie might find blowing up the trolley to be a perfectly reasonable solution. So you end up adding additional clauses: "err, also don't blow it up!".
 
 This is followed by a one-shot training example, where I provide a single example of what I want the model to do. I provide a starting state with my initial  data structure:
 ```
@@ -151,7 +151,7 @@ fetch("prompts/data.prompt")
   .then((text) => text.replace("$state", JSON.stringify(state)))
 ```
 
-We have some control over the parameters of the model, such as the temperature, max tokens, and top p. I found that the model works best when the `temperature` is set to 0.3. Temperature controls the "creativity" of the model. A higher temperature means the model is more likely to generate creative responses. A lower temperature means the model is more likely to generate responses that are more likely to be correct. `frequency_penalty` sets a penalty for repeating words. `presence_penalty` sets a penalty for repeating n-grams. `top_p` sets the probability mass function cutoff.
+We have some control over the parameters of the model, such as the temperature, max tokens, and top p. I found that the model works best when the `temperature` is set to 0.3. Temperature controls the "creativity" of the model. A lower temperature means the model is more likely to generate correct, almost deterministic responses. A higher temperature means the model generally leads to creative responses.  `frequency_penalty` sets a penalty for repeating words. `presence_penalty` sets a penalty for repeating n-grams. `top_p` sets the probability mass function cutoff.
 
 ```javascript
 const DEFAULT_PARAMS = {

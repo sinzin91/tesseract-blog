@@ -3,7 +3,7 @@ title: "Augmenting Human Intelligence With AI"
 date: 2023-03-07T17:27:13-08:00
 draft: false
 # weight: 1
-tags: ["gpt", "anki", "ai"]
+tags: ["gpt", "anki", "ai", "code"]
 author: "Tenzin Wangdhen"
 showToc: true
 TocOpen: false
@@ -22,11 +22,11 @@ ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
 cover:
-    image: "/images/ai_socrates" # image path/url
-    alt: "<alt text>" # alt text
+    image: "/images/ai_socrates.png" # image path/url
+    alt: "Midjourney: artificial intelligence version of Socrates" # alt text
     caption: "Midjourney: artificial intelligence version of Socrates" # display caption under cover
 #     relative: false # when using page bundles set this to true
-#     hidden: true # only hide on current single page
+    hidden: false # only hide on current single page
 editPost:
     URL: "https://github.com/sinzin91/tesseract-blog/blob/master/content"
     Text: "Suggest Changes" # edit text

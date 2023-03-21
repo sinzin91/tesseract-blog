@@ -33,7 +33,7 @@ editPost:
 ---
 
 ### TLDR
-"Peak: Secrets from the New Science of Expertise" by Anders Ericsson challenges conventional wisdom about talent, skill acquisition, and what it takes to achieve true expertise. This popular science/self-help book is filled with anecdotes that support the author's claims. Ericsson, a researcher in the field, highlights several experiments to back up his claims, although some of the cited studies had small sample sizes. Despite containing some contradictions, the book offers a fascinating exploration of the science of expertise and empowers readers to pursue their path to mastery. Ericsson demonstrates that deliberate practice, not innate talent, is the key to mastery.
+["Peak: Secrets from the New Science of Expertise"](https://www.goodreads.com/en/book/show/26312997) by [Anders Ericsson](https://en.wikipedia.org/wiki/K._Anders_Ericsson) challenges conventional wisdom about talent, skill acquisition, and what it takes to achieve true expertise. Ericsson, a psychologist and researcher in the field of expertise, highlights several experiments to back up his claims, although some of the cited studies had small sample sizes. Despite containing some contradictions, the book offers a fascinating exploration of the science of expertise and empowers readers to pursue their path to mastery. Ericsson demonstrates that deliberate practice, not innate talent, is the key to mastery.
 
 
 ### Deliberate Practice
@@ -66,7 +66,9 @@ In several sports anecdotes, Ericsson shows that athletes can surpass their pred
 
 
 ### Contradictions
-Despite its persuasive arguments, "Peak" is not without contradictions. For instance, Ericsson claims in one section that deliberate practice is not enjoyable for practitioners, while in another he says that it is. He asserts that deliberate practice can lead to virtually any accomplishment, yet also acknowledges that certain abilities can only be developed during childhood or for those with certain genetic attributes. Ericsson notes that younger doctors are often more effective than those with 20 years of experience because their medical school knowledge is more recent. However, he also emphasizes that mere knowledge is not enough and that one needs to acquire skills through practice. While Ericsson tried to address both sides of the argument, it would have been helpful if he were more explicit about the contradictions in his thesis.
+Despite its persuasive arguments, "Peak" is not without contradictions. For instance, Ericsson claims in one section that deliberate practice is not enjoyable for practitioners, while in another he says that it is. He asserts that deliberate practice can lead to virtually any accomplishment, yet also acknowledges that certain abilities can only be developed during childhood or for those with certain genetic attributes. 
+
+Ericsson notes that younger doctors are often more effective than those with 20 years of experience because their medical school knowledge is more recent. However, he also emphasizes that mere knowledge is not enough and that one needs to acquire skills through practice. While Ericsson tried to address both sides of the argument, it would have been helpful if he were more explicit about the contradictions in his thesis.
 
 ### Application
 To make the idea of deliberate practice more concrete, let's use the example of practicing guitar every day. A naive way to practice would be to mindlessly play through the same songs repeatedly each day, failing at the same sections each time. This mindless repetition can leave you stagnating in a well-worn rut, making you feel like you've reached the peak of your abilities. I'll admit, this is often how I practice guitar.

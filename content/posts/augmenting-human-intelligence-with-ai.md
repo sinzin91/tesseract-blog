@@ -192,7 +192,7 @@ fetch("https://api.openai.com/v1/chat/completions", requestOptions)
 	const text = data.choices[0].message.content;
 	// replace ' with " to make it valid JSON
 	const new_state = JSON.parse(text.replace(/'/g, '"'));
-	setState(new_state;
+	setState(new_state);
 ```
 
 If the user generates another question, we pass in the `$state` which now includes the first question. This lets the model we know what it already asked.

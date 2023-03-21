@@ -9,7 +9,8 @@ showToc: true
 TocOpen: false
 hidemeta: false
 comments: false
-description: "SocrateGPT helps you learn topics better by asking you questions about it."
+description: "SocratesGPT helps you learn topics better by asking you questions about it."
+canonicalURL: "https://t12n.substack.com/p/augmenting-human-intelligence-with"
 disableHLJS: false # to disable highlightjs
 disableShare: false
 hideSummary: false
@@ -20,10 +21,10 @@ ShowPostNavLinks: true
 ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
-# cover:
-#     image: "<image path/url>" # image path/url
-#     alt: "<alt text>" # alt text
-#     caption: "<text>" # display caption under cover
+cover:
+    image: "/images/ai_socrates" # image path/url
+    alt: "<alt text>" # alt text
+    caption: "Midjourney: artificial intelligence version of Socrates" # display caption under cover
 #     relative: false # when using page bundles set this to true
 #     hidden: true # only hide on current single page
 editPost:

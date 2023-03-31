@@ -1,5 +1,5 @@
 ---
-title: "I built a semantic movie search app with GPT-4"
+title: "GPT-4 made me a movie search app"
 date: 2023-03-29T19:11:16-07:00
 draft: false
 # weight: 1

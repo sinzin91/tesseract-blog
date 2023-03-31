@@ -2,30 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tenzin&#39;s Blog</title>
-    <link>https://tesseract-blog.netlify.app/</link>
+    <link>https://tenzinwangdhen.com/</link>
     <description>Recent content on Tenzin&#39;s Blog</description>
     <image>
       <title>Tenzin&#39;s Blog</title>
-      <url>https://tesseract-blog.netlify.app/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://tesseract-blog.netlify.app/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 18 Mar 2023 20:47:40 -0700</lastBuildDate><atom:link href="https://tesseract-blog.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Mar 2023 19:11:16 -0700</lastBuildDate><atom:link href="https://tenzinwangdhen.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPT-4 made me a movie search app</title>
+      <link>https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/</link>
+      <pubDate>Wed, 29 Mar 2023 19:11:16 -0700</pubDate>
+      
+      <guid>https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/</guid>
+      <description>Exploring the unreasonable effectiveness of building apps with GPT-4</description>
+    </item>
+    
     <item>
       <title>Book Review - Peak: Secrets from the New Science of Expertise</title>
-      <link>https://tesseract-blog.netlify.app/posts/book-review-peak/</link>
+      <link>https://tenzinwangdhen.com/posts/book-review-peak/</link>
       <pubDate>Sat, 18 Mar 2023 20:47:40 -0700</pubDate>
       
-      <guid>https://tesseract-blog.netlify.app/posts/book-review-peak/</guid>
+      <guid>https://tenzinwangdhen.com/posts/book-review-peak/</guid>
       <description>Book Review - Peak: Secrets from the New Science of Expertise</description>
     </item>
     
     <item>
       <title>Augmenting Human Intelligence With AI</title>
-      <link>https://tesseract-blog.netlify.app/posts/augmenting-human-intelligence-with-ai/</link>
+      <link>https://tenzinwangdhen.com/posts/augmenting-human-intelligence-with-ai/</link>
       <pubDate>Tue, 07 Mar 2023 17:27:13 -0800</pubDate>
       
-      <guid>https://tesseract-blog.netlify.app/posts/augmenting-human-intelligence-with-ai/</guid>
+      <guid>https://tenzinwangdhen.com/posts/augmenting-human-intelligence-with-ai/</guid>
       <description>SocratesGPT helps you learn topics better by asking you questions about it.</description>
     </item>
     

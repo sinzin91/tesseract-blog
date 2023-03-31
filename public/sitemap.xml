@@ -2,49 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tesseract-blog.netlify.app/posts/book-review-peak/</loc>
+    <loc>https://tenzinwangdhen.com/tags/gpt/</loc>
+    <lastmod>2023-03-29T19:11:16-07:00</lastmod>
+  </url><url>
+    <loc>https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/</loc>
+    <lastmod>2023-03-29T19:11:16-07:00</lastmod>
+  </url><url>
+    <loc>https://tenzinwangdhen.com/posts/</loc>
+    <lastmod>2023-03-29T19:11:16-07:00</lastmod>
+  </url><url>
+    <loc>https://tenzinwangdhen.com/tags/project/</loc>
+    <lastmod>2023-03-29T19:11:16-07:00</lastmod>
+  </url><url>
+    <loc>https://tenzinwangdhen.com/tags/search/</loc>
+    <lastmod>2023-03-29T19:11:16-07:00</lastmod>
+  </url><url>
+    <loc>https://tenzinwangdhen.com/tags/</loc>
+    <lastmod>2023-03-29T19:11:16-07:00</lastmod>
+  </url><url>
+    <loc>https://tenzinwangdhen.com/</loc>
+    <lastmod>2023-03-29T19:11:16-07:00</lastmod>
+  </url><url>
+    <loc>https://tenzinwangdhen.com/posts/book-review-peak/</loc>
     <lastmod>2023-03-18T20:47:40-07:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/books/</loc>
+    <loc>https://tenzinwangdhen.com/tags/books/</loc>
     <lastmod>2023-03-18T20:47:40-07:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/growth/</loc>
+    <loc>https://tenzinwangdhen.com/tags/growth/</loc>
     <lastmod>2023-03-18T20:47:40-07:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/habits/</loc>
+    <loc>https://tenzinwangdhen.com/tags/habits/</loc>
     <lastmod>2023-03-18T20:47:40-07:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/posts/</loc>
+    <loc>https://tenzinwangdhen.com/tags/science/</loc>
     <lastmod>2023-03-18T20:47:40-07:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/science/</loc>
-    <lastmod>2023-03-18T20:47:40-07:00</lastmod>
-  </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/</loc>
-    <lastmod>2023-03-18T20:47:40-07:00</lastmod>
-  </url><url>
-    <loc>https://tesseract-blog.netlify.app/</loc>
-    <lastmod>2023-03-18T20:47:40-07:00</lastmod>
-  </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/ai/</loc>
+    <loc>https://tenzinwangdhen.com/tags/ai/</loc>
     <lastmod>2023-03-07T17:27:13-08:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/anki/</loc>
+    <loc>https://tenzinwangdhen.com/tags/anki/</loc>
     <lastmod>2023-03-07T17:27:13-08:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/posts/augmenting-human-intelligence-with-ai/</loc>
+    <loc>https://tenzinwangdhen.com/posts/augmenting-human-intelligence-with-ai/</loc>
     <lastmod>2023-03-07T17:27:13-08:00</lastmod>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/gpt/</loc>
-    <lastmod>2023-03-07T17:27:13-08:00</lastmod>
+    <loc>https://tenzinwangdhen.com/archives/</loc>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/tags/project/</loc>
-    <lastmod>2023-03-07T17:27:13-08:00</lastmod>
+    <loc>https://tenzinwangdhen.com/categories/</loc>
   </url><url>
-    <loc>https://tesseract-blog.netlify.app/archives/</loc>
-  </url><url>
-    <loc>https://tesseract-blog.netlify.app/categories/</loc>
-  </url><url>
-    <loc>https://tesseract-blog.netlify.app/search/</loc>
+    <loc>https://tenzinwangdhen.com/search/</loc>
   </url>
 </urlset>

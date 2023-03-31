@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://tesseract-blog.netlify.app/sitemap.xml

@@ -3,7 +3,7 @@ title: "Augmenting Human Intelligence With AI"
 date: 2023-03-07T17:27:13-08:00
 draft: false
 # weight: 1
-tags: ["gpt", "anki", "ai", "code"]
+tags: ["gpt", "anki", "ai", "project"]
 author: "Tenzin Wangdhen"
 showToc: true
 TocOpen: false
@@ -37,7 +37,7 @@ editPost:
 
 I created [SocratesGPT](https://github.com/sinzin91/socrates-gpt) to test the concept of using AI to generate questions about a given topic. Its goal you learn topics better by asking you questions about it. I also provide some technical details on the implementation.
 
-![SocratesGPT](/images/demo.gif)
+![SocratesGPT](/images/socratesGPT_demo.gif)
 
 ## Why?
 

@@ -32,10 +32,11 @@ editPost:
     appendFilePath: true # to append file path to Edit link
 ---
 
-TLDR
+TLDR:
 I built a semantic movie search app with GPT-4. You can check it out here: https://moviesgpt.net/. And here's the Github repo: https://github.com/sinzin91/moviesGPT
 
 ![MoviesGPT Demo](/images/moviesgpt/moviesgpt-demo.gif)
+_the hero keeps forgetting who he is_
 
 
 I've been thinking a lot about potential products one can build around LLMs. One idea I mentioned jokingly to some friends was to use GPT as a natural language interface to a movies API.

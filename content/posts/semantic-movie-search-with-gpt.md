@@ -1,7 +1,7 @@
 ---
 title: "I built a semantic movie search app with GPT-4"
 date: 2023-03-29T19:11:16-07:00
-draft: true
+draft: false
 # weight: 1
 tags: ["gpt", "search", "project"]
 author: "Tenzin Wangdhen"
@@ -9,7 +9,7 @@ showToc: true
 TocOpen: false
 hidemeta: false
 comments: false
-description: "How I built a semantic movie search app with GPT-4"
+description: "Exploring the unreasonable effectiveness of building apps with GPT-4"
 disableHLJS: false # to disable highlightjs
 disableShare: false
 hideSummary: false
@@ -163,7 +163,7 @@ _can't find movies from 2022_
 
 I tried using `gpt-3.5-turbo`, but that model seemed to be much more prudish, refusing to respond to searches on movies involving murder, or other subjects deemed unseemly by the moderators. So I switched back to `text-davinci-003`. 
 
-To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don't think someone that has no experience with React or Javascript would be able to replicate this. GPT still gets some stuff wrong, like telling me to use outdated libraries or generating wonky styles (_who wants a blue background on a header??_). But it's getting pretty damn close. I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn't do well with the big picture decisions, but knows how to implement very well given the right direction.
+To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don't think someone that has no experience with React or Javascript would be able to replicate this. GPT still gets some stuff wrong, like telling me to use outdated libraries or generating wonky styles (_who wants a blue background on a header??_). But it's getting pretty damn close. I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn't do well with the big picture decisions, but knows how to implement very well given the right direction. To be fair, I'm not doing anything ground-breaking here. There must be tons of sites like this in the pretraining data, so it's relatively easy for GPT to generate the relevant code.
 
 It was also _much_ easier to get into that elusive flow state while hacking this out. The dopamine hits from thinking of a feature and seeing it in action just kept coming, without the usual frustrations of not knowing how a particular function works and having to look it up. This makes coding _fun_ again. 
 

@@ -38,13 +38,14 @@ I built a semantic movie search app with GPT-4. You can check it out here: https
 ![MoviesGPT Demo](/images/moviesgpt/moviesgpt-demo.gif)
 _the hero keeps forgetting who he is_
 
+### Idea
+I've been thinking a lot about potential products that one can build around LLMs. One idea I mentioned jokingly to some friends was to use GPT as a natural language interface to a movies API.
 
-I've been thinking a lot about potential products one can build around LLMs. One idea I mentioned jokingly to some friends was to use GPT as a natural language interface to a movies API.
+In theory, I thought, you could ask GPT about movies semantically, meaning you could search based on what the movie is about or its content, instead of just raw keyword search. For example, I could search for "movies where all the main characters die" and get back "The Departed". Then I could use the response to query a movies API like The Movies Database. Google is surprisingly bad at this, returning links to listicles instead of the movies themselves.
 
-In theory, I thought, you could ask GPT about movies semantically, meaning you search based on what the movie is about or its content, instead of just raw keyword search. For example, I could search for "movies where all the main characters die" and get back "The Departed". Then I could use the response to query a movies API like The Movies Database. Google is surprisingly bad at this, returning links to listicles instead of the movies themselves.
+The current way to do this, and the one that even ChatGPT recommends, is to gather data on all the movies, generate [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) on that data, store it in a Vector database, and then query using something like cosine similarity. But GPT-3, having been trained on all internet data, has "seen" every movie and discussion around every movie already. It already has the embeddings. And it already "knows" how to find those movies given the right prompt.
 
-The current way to do this, and the one that even ChatGPT recommends, is gathering data on all the movies, generating [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) on that data, storing it in a Vector database, and then querying using something like cosine similarity. But GPT-3, having been trained on all internet data, has "seen" every movie and discussion around every movie already. It already has the embeddings. And it already "knows" how to find those movies given the right prompt.
-
+### Implementation
 With this rough sketch of an idea, I sipped some coffee and entered this into GPT-4:
 ```text
 You are a master professional front end React developer. 
@@ -104,12 +105,11 @@ With this change, I had the first working POC of my original idea! The last time
 ![Factorio Robots](/images/moviesgpt/factorio-robots.png)
 _in Factorio, eventually you can have robots automatically build things based on blueprints_
 
-Whew, ok great, now what? 
+Whew, okay, great. Now what?
 
-I showed the app to a friend, and he mentioned that it looked like crap on mobile. So I asked GPT-4: `change the css so the website works well on mobile phones`. Lo and behold, after copying over the CSS directly, the site worked flawlessly on mobile. No futzing with media queries for me!
+I showed the app to a friend, and he mentioned that it looked terrible on mobile. So I asked GPT-4 to "change the CSS so the website works well on mobile phones." Lo and behold, after copying over the CSS directly, the site worked flawlessly on mobile. No futzing with media queries for me!
 
-
-I realized I also wanted to add some star ratings to these movies, to get a sense of their popularity. TMDb API returns `vote_ratings`, which is a number from 0 to 10. I found the distribution of `vote_ratings` here https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb. 
+I also realized that I wanted to add star ratings to these movies to get a sense of their popularity. The TMDb API returns "vote_ratings," which is a number from 0 to 10. I found the distribution of "vote_ratings" here: https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb.
 
 Adding a stars component was also mostly copy/paste once I wrote the prompt:
 ```text
@@ -123,7 +123,7 @@ single bright yellow star and four grey stars in the component.
 I also wanted something to happen when I clicked on the cards. Maybe show the movie summary, release date, etc. Here's the prompt:
 ![Overlay](/images/moviesgpt/moviesgpt-overlay.png)
 
-One thing that was bothering me in terms of practical usability was the lack of Rotten Tomatoes ratings. Often, that's the first thing I check when deciding whether to watch a given movie. Unfortunately, Rotten Tomatoes charges $60k/year (!!) for access to their API. Then I had the idea of asking GPT for the Rotten Tomatoes ratings. To my surprise, it does seem to have a sense for the ratings. Though they aren't fully accurate, they seem to be generally in the right ballpark.
+One thing that was bothering me in terms of practical usability was the lack of Rotten Tomatoes ratings. Often, that's the first thing I check when deciding whether to watch a given movie. Unfortunately, Rotten Tomatoes charges $60k/year (!!) for access to their API. Then I had the idea of asking GPT for the Rotten Tomatoes ratings. To my surprise, it does seem to have a sense for the ratings. Although they are not fully accurate, they seem to be generally in the right ballpark.
 
 I updated my prompt to generate a new data structure that includes the Rotten Tomatoes ratings:
 ```
@@ -157,17 +157,33 @@ Now I can safely avoid these movies!
 
 ![Rotten Tomatoes Rating](/images/moviesgpt/moviesgpt-rottentomatoes.png)
 
-I was surprised by how well semantic search works out of the box with GPT. There are some limitations though. One is that it only knows about movies up to the date it was trained, which is late 2021. When asked about movies after that, it simply responds that it doesn't know. This issue may get addressed by the Plugins that OpenAI announced, which would allow GPT to call live APIs to fetch realtime data.
+I was surprised by how well semantic search works out of the box with GPT. However, there are some limitations. One is that it only recognizes movies up to the date it was trained, which was late 2021. When asked about movies released after that, it simply responds that it doesn't know. This issue may be addressed by the Plugins that OpenAI announced, which would allow GPT to call live APIs to fetch real-time data. One could also probably create a fine-tuned model that is trained on more recent movies.
 
 ![Can't find movies from 2022](/images/moviesgpt/moviesgpt-2022-movies.png)
 _can't find movies from 2022_
 
-I tried using `gpt-3.5-turbo`, but that model seemed to be much more prudish, refusing to respond to searches on movies involving murder, or other subjects deemed unseemly by the moderators. So I switched back to `text-davinci-003`. 
+I tried using `gpt-3.5-turbo`, but that model seemed to be much more prudish, refusing to respond to searches on movies deemed unseemly by the RLHF moderators. So I switched back to `text-davinci-003` for now.
 
-To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don't think someone that has no experience with React or Javascript would be able to replicate this. GPT still gets some stuff wrong, like telling me to use outdated libraries or generating wonky styles (_who wants a blue background on a header??_). But it's getting pretty damn close. I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn't do well with the big picture decisions, but knows how to implement very well given the right direction. To be fair, I'm not doing anything ground-breaking here. There must be tons of sites like this in the pretraining data, so it's relatively easy for GPT to generate the relevant code.
+### Limitations
+To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don't think someone that has no experience with React or Javascript would be able to replicate this. GPT still gets some stuff wrong, like telling me to use outdated libraries or generating wonky styles (_who wants a blue background on a header??_). But it's getting pretty damn close. 
 
-It was also _much_ easier to get into that elusive flow state while hacking this out. The dopamine hits from thinking of a feature and seeing it in action just kept coming, without the usual frustrations of not knowing how a particular function works and having to look it up. This makes coding _fun_ again. 
+In more ambitous projects, I've noticed that GPT starts to "forget" the code it had previously suggested. So when I ask to change some function, it spits out a new version of the file that has a completely different implementation and method names. Maybe this is a result of the limited context window. I've gotten around this by pasting in the code again and asking it to make the change given that context.
+
+### Closing Thoughts
+I tried using `gpt-3.5-turbo`, but that model seemed to be much more conservative, refusing to respond to searches on movies deemed inappropriate by the RLHF moderators. So I switched back to `text-davinci-003` for now.
+
+### Limitations
+
+To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don't think someone without experience in React or Javascript would be able to replicate this. GPT still gets some things wrong, like telling me to use outdated libraries or generating wonky styles (*who wants a blue background on a header??*). But it's getting pretty close.
+
+In more ambitious projects, I've noticed that GPT starts to "forget" the code it had previously suggested. So when I ask to change some function, it spits out a new version of the file that has a completely different implementation and method names. Maybe this is a result of the limited context window. I've gotten around this by pasting in the code again and asking it to make the change given that context.
+
+### Closing Thoughts
+
+I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn't do well with big picture decisions, but knows how to implement very well given the right direction. To be fair, I'm not doing anything groundbreaking here. There must be tons of sites like this in the pretraining data, so it's relatively easy for GPT to generate the relevant code.
+
+It was also *much* easier to get into that elusive flow state while hacking this out. The dopamine hits from thinking of a feature and seeing it in action just kept coming, without the usual frustrations of not knowing how a particular function works and having to look it up. This makes coding *fun* again.
 
 It's clear that I am the bottleneck in this process. I'm sitting here copying and pasting from GPT with some slight modifications. It seems like the natural progression here is to have GPT directly create the code based on my prompts. I imagine you could build a more advanced "Create React App" that generates and updates the app based on your prompts.
 
-I hope this inspires people to pursue building those apps they always wanted to build, but couldn't find time for. GPT still does not know _what_ app to build and _why_ it should build it, which is where we come in.
+I hope this inspires people to pursue building those apps they always wanted to build, but couldn't find time for. GPT still does not know *what* app to build and *why* it should build it, which is where we come in. Let a thousand flowers bloom!

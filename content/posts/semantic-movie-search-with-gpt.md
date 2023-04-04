@@ -10,6 +10,7 @@ TocOpen: false
 hidemeta: false
 comments: false
 description: "Exploring the unreasonable effectiveness of building apps with GPT-4"
+canonicalURL: "https://t12n.substack.com/p/gpt-4-made-me-a-gpt-powered-movie"
 disableHLJS: false # to disable highlightjs
 disableShare: false
 hideSummary: false

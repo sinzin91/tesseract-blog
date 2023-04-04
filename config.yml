@@ -81,6 +81,8 @@ params:
       url: "https://github.com/sinzin91"
     - name: linkedin
       url: "https://www.linkedin.com/in/tenzinw"
+    - name: substack
+      url: "https://t12n.substack.com/"
 
   analytics:
     google:

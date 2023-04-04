@@ -165,14 +165,6 @@ _can't find movies from 2022_
 I tried using `gpt-3.5-turbo`, but that model seemed to be much more prudish, refusing to respond to searches on movies deemed unseemly by the RLHF moderators. So I switched back to `text-davinci-003` for now.
 
 ### Limitations
-To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don't think someone that has no experience with React or Javascript would be able to replicate this. GPT still gets some stuff wrong, like telling me to use outdated libraries or generating wonky styles (_who wants a blue background on a header??_). But it's getting pretty damn close. 
-
-In more ambitous projects, I've noticed that GPT starts to "forget" the code it had previously suggested. So when I ask to change some function, it spits out a new version of the file that has a completely different implementation and method names. Maybe this is a result of the limited context window. I've gotten around this by pasting in the code again and asking it to make the change given that context.
-
-### Closing Thoughts
-I tried using `gpt-3.5-turbo`, but that model seemed to be much more conservative, refusing to respond to searches on movies deemed inappropriate by the RLHF moderators. So I switched back to `text-davinci-003` for now.
-
-### Limitations
 
 To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don't think someone without experience in React or Javascript would be able to replicate this. GPT still gets some things wrong, like telling me to use outdated libraries or generating wonky styles (*who wants a blue background on a header??*). But it's getting pretty close.
 

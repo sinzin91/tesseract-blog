@@ -1,7 +1,7 @@
 ---
 title: "Google's Innovator's Dilemma"
 date: 2023-04-17T19:25:48-07:00
-draft: true
+draft: false
 tags: ["gpt", "business", "ai"]
 author: "Tenzin Wangdhen"
 showToc: true

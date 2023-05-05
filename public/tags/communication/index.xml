@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>books on Tenzin&#39;s Blog</title>
-    <link>https://tenzinwangdhen.com/tags/books/</link>
-    <description>Recent content in books on Tenzin&#39;s Blog</description>
+    <title>communication on Tenzin&#39;s Blog</title>
+    <link>https://tenzinwangdhen.com/tags/communication/</link>
+    <description>Recent content in communication on Tenzin&#39;s Blog</description>
     <image>
       <title>Tenzin&#39;s Blog</title>
       <url>https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 04 May 2023 18:42:38 -0700</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/books/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 May 2023 18:42:38 -0700</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/communication/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Book Review - Made to Stick</title>
       <link>https://tenzinwangdhen.com/posts/book-review-made-to-stick/</link>
@@ -18,15 +18,6 @@
       
       <guid>https://tenzinwangdhen.com/posts/book-review-made-to-stick/</guid>
       <description>How to craft memorable and influential ideas</description>
-    </item>
-    
-    <item>
-      <title>Book Review - Peak: Secrets from the New Science of Expertise</title>
-      <link>https://tenzinwangdhen.com/posts/book-review-peak/</link>
-      <pubDate>Sat, 18 Mar 2023 20:47:40 -0700</pubDate>
-      
-      <guid>https://tenzinwangdhen.com/posts/book-review-peak/</guid>
-      <description>Book Review - Peak: Secrets from the New Science of Expertise</description>
     </item>
     
   </channel>

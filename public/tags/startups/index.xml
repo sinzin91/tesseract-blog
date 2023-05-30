@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>business on Tenzin&#39;s Blog</title>
-    <link>https://tenzinwangdhen.com/tags/business/</link>
-    <description>Recent content in business on Tenzin&#39;s Blog</description>
+    <title>startups on Tenzin&#39;s Blog</title>
+    <link>https://tenzinwangdhen.com/tags/startups/</link>
+    <description>Recent content in startups on Tenzin&#39;s Blog</description>
     <image>
       <title>Tenzin&#39;s Blog</title>
       <url>https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 29 May 2023 18:14:55 -0700</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/business/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 May 2023 18:14:55 -0700</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/startups/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Book Review - Founders at Work</title>
       <link>https://tenzinwangdhen.com/posts/book-review-founders-at-work/</link>
@@ -18,15 +18,6 @@
       
       <guid>https://tenzinwangdhen.com/posts/book-review-founders-at-work/</guid>
       <description>A time capsule of startup interviews</description>
-    </item>
-    
-    <item>
-      <title>Google&#39;s Innovator&#39;s Dilemma</title>
-      <link>https://tenzinwangdhen.com/posts/google-innovators-dilemma/</link>
-      <pubDate>Mon, 17 Apr 2023 19:25:48 -0700</pubDate>
-      
-      <guid>https://tenzinwangdhen.com/posts/google-innovators-dilemma/</guid>
-      <description>Can Google Adapt to the LLM Revolution?</description>
     </item>
     
   </channel>

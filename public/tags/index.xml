@@ -10,7 +10,25 @@
       <link>https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 29 May 2023 18:14:55 -0700</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jun 2023 19:47:27 -0700</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ai</title>
+      <link>https://tenzinwangdhen.com/tags/ai/</link>
+      <pubDate>Sun, 11 Jun 2023 19:47:27 -0700</pubDate>
+      
+      <guid>https://tenzinwangdhen.com/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>project</title>
+      <link>https://tenzinwangdhen.com/tags/project/</link>
+      <pubDate>Sun, 11 Jun 2023 19:47:27 -0700</pubDate>
+      
+      <guid>https://tenzinwangdhen.com/tags/project/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>books</title>
       <link>https://tenzinwangdhen.com/tags/books/</link>
@@ -66,29 +84,11 @@
     </item>
     
     <item>
-      <title>ai</title>
-      <link>https://tenzinwangdhen.com/tags/ai/</link>
-      <pubDate>Mon, 17 Apr 2023 19:25:48 -0700</pubDate>
-      
-      <guid>https://tenzinwangdhen.com/tags/ai/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>gpt</title>
       <link>https://tenzinwangdhen.com/tags/gpt/</link>
       <pubDate>Mon, 17 Apr 2023 19:25:48 -0700</pubDate>
       
       <guid>https://tenzinwangdhen.com/tags/gpt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>project</title>
-      <link>https://tenzinwangdhen.com/tags/project/</link>
-      <pubDate>Wed, 29 Mar 2023 19:11:16 -0700</pubDate>
-      
-      <guid>https://tenzinwangdhen.com/tags/project/</guid>
       <description></description>
     </item>
     

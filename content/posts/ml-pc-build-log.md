@@ -8,7 +8,7 @@ showToc: true
 TocOpen: false
 hidemeta: false
 comments: false
-description: "Assembly of a GTX 4090 machine learning PC."
+description: "Assembly of a RTX 4090 machine learning PC."
 disableHLJS: false # to disable highlightjs
 disableShare: false
 hideSummary: false
@@ -37,13 +37,13 @@ editPost:
 
 With the emergence of generative AI, I finally had a compelling reason to build a new PC. Most deep learning projects require a dedicated GPU, making them difficult to run even on an M1 MBP. While cloud options like Paperspace and Colab exist, the GPUs they provide access to are limited. Paperspace, for instance, only allows access to the most basic GPU and denied my request for access to the RTX 4000. AWS was also an option, but it was somewhat inconvenient to use cost-effectively since you would have to stop the instance and snapshot the volume to save on costs. Having a local GPU is crucial to quickly run experiments at a small scale before deploying them to the cloud to run on bigger hardware. This helps me minimize the feedback loop and make faster progress. I had previously built a computer a couple of times in high school, mostly for gaming. I didn't have a good reason to do it again until now.
 
-Another option would have been to buy a pre-built GTX 4090 rig, which would have been easier. However, it would have provided less value for the money, with cheaper components. By building my own computer, I was able to get twice the amount of RAM, a larger SSD, and a nicer case for the same price as the pre-built option. Additionally, building my own rig provided a learning experience and made me more comfortable with changing out parts if necessary.
+Another option would have been to buy a pre-built RTX 4090 rig, which would have been easier. However, it would have provided less value for the money, with cheaper components. By building my own computer, I was able to get twice the amount of RAM, a larger SSD, and a nicer case for the same price as the pre-built option. Additionally, building my own rig provided a learning experience and made me more comfortable with changing out parts if necessary.
 
 ## Build Specs
 
 - CPU: Intel Core i9-13900K 3 GHz 24-Core
 - RAM: 4x 32gb DDR5-6400
-- GPU: Gigabyte GTX 4090
+- GPU: Gigabyte RTX 4090
 - Power supply: 1000W Corsair modular power supply
 - Motherboard: MSI MPG Z790 EDGE Wifi
 - Case: Lian Li Dynamic EVO
@@ -56,13 +56,13 @@ Parts list: https://pcpartpicker.com/b/rZqp99
 
 ## Picking the parts
 
-When I was picking the parts for my PC build, I started by researching on PC Parts Picker. I was looking for a builds that included the GTX 4090, currently the most powerful consumer GPU. Most people seemed to be building for gaming or content production use cases, but the requirements for deep learning are not that different. The main thing is having a powerful GPU. Using PC Parts Picker, I was able to come up with a list of everything I needed and gradually swapped things out as I did more research on parts.
+When I was picking the parts for my PC build, I started by researching on PC Parts Picker. I was looking for a builds that included the RTX 4090, currently the most powerful consumer GPU. Most people seemed to be building for gaming or content production use cases, but the requirements for deep learning are not that different. The main thing is having a powerful GPU. Using PC Parts Picker, I was able to come up with a list of everything I needed and gradually swapped things out as I did more research on parts.
 
 I got all the parts on Amazon. I considered Newegg, but heard some horror stories online about Newegg making it very difficult to return defective parts. Amazon has a no questions asked return policy, which I did end up using for one of my RAM sticks with broken RGB.
 
 ### GPU
 
-I had already decided on the GTX 4090 as the centerpiece of my build. The only alternative would have been the [GTX 3090](https://gpu.userbenchmark.com/Compare/Nvidia-RTX-4090-vs-Nvidia-RTX-3090/4136vs4081), which has 50% fewer CUDA cores and lower performance in training throughput, as well as being less power efficient. However, the 4090 has the same amount of VRAM as the 3090, and costs about $1600 vs $1000 for the 3090.
+I had already decided on the RTX 4090 as the centerpiece of my build. The only alternative would have been the [RTX 3090](https://gpu.userbenchmark.com/Compare/Nvidia-RTX-4090-vs-Nvidia-RTX-3090/4136vs4081), which has 50% fewer CUDA cores and lower performance in training throughput, as well as being less power efficient. However, the 4090 has the same amount of VRAM as the 3090, and costs about $1600 vs $1000 for the 3090.
 
 The choice was mainly between the top-rated 4090 cards on Amazon, and I ultimately decided on the Gigabyte 4090 due to its positive reviews and quick shipping.
 
@@ -167,7 +167,7 @@ Putting the head of the cooler on the CPU was actually pretty easy.
 
 The 4090 is a beast of a GPU, taking up 3.5 PCIe slots. Thankfully it fit in the case with plenty of room. Installation proved pretty easy. Apparently the Lian Li case allows for vertical mounting of the GPU with a supplied bracket, but I didn't really want to bother with that.
 
-![Big GTX 4090](/images/pc-build/gpu-size.png)
+![Big RTX 4090](/images/pc-build/gpu-size.png)
 
 ### Connecting Power Supply
 

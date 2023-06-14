@@ -145,7 +145,7 @@ Once the case was prepped, I screwed the motherboard into place.
 
 ### Case Fans
 
-This probably took the most time. I had to spend quite a bit of time thinking through fan placement. I had ordered 12 Lian Li SL-Infinity fans, by far the most case fans I've ever put into a PC. There's some [theory](https://www.tomshardware.com/how-to/set-up-pc-case-fans-for-airflow-and-performance) on the best fan placement to reduce dust build up and improve airflow. I ended up going with three intake on the bottom and one in the back, and three exhaust on the side and top.
+This probably took the most time. I had to spend quite a bit of time thinking through fan placement. I had ordered 9 Lian Li SL-Infinity fans, by far the most case fans I've ever put into a PC. There's some [theory](https://www.tomshardware.com/how-to/set-up-pc-case-fans-for-airflow-and-performance) on the best fan placement to reduce dust build up and improve airflow. I ended up going with three intake on the bottom and one in the back, and two exhaust on the side and three on top.
 
 The nice thing about the Lian Li fans was that they daisy chain pretty easily, so a set of three fans could be powered by a single cable. That cable then connects to a central hub that can be connected to up to four sets of fans, which is powered by a single cable from the power supply. The one issue was I had a hard time figuring out which side was the face (intake). It turned out that in my version, the mirrored side is the face. Lots of screwing fans in and out involved.
 
@@ -169,7 +169,7 @@ The 4090 is a beast of a GPU, taking up 3.5 PCIe slots. Thankfully it fit in the
 
 ![Big RTX 4090](/images/pc-build/gpu-size.png)
 
-I got scolded by folks on PC Parts Picker for not installing the GPU bracket. I avoided it because my JUSB4 connector was too big and blocked the top part of the bracket. The GPU also seemed stable enough without it. However, it seems that overtime the GPU is so large that it will sag and potentially break the PCIe slot or the GPU itself. I ended up installing the bracket after all, I can live without a front panel USB-C port.
+I got scolded by folks on PC Parts Picker for not installing the GPU bracket. This was included with the Gigabyte RTX 4090, but I avoided installing it because my JUSB4 connector was too big and blocked the top part of the bracket. The GPU also seemed stable enough without it. However, it seems that the GPU is so large that overtime it will sag and potentially break the PCIe slot or the GPU itself. I ended up installing the bracket after all, I can live without a front panel USB-C port.
 
 ![GPU bracket](/images/pc-build/gpu_bracket.jpg)
 

@@ -169,6 +169,10 @@ The 4090 is a beast of a GPU, taking up 3.5 PCIe slots. Thankfully it fit in the
 
 ![Big RTX 4090](/images/pc-build/gpu-size.png)
 
+I got scolded by folks on PC Parts Picker for not installing the GPU bracket. I avoided it because my JUSB4 connector was too big and blocked the top part of the bracket. The GPU also seemed stable enough without it. However, it seems that overtime the GPU is so large that it will sag and potentially break the PCIe slot or the GPU itself. I ended up installing the bracket after all, I can live without a front panel USB-C port.
+
+![GPU bracket](/images/pc-build/gpu_bracket.png)
+
 ### Connecting Power Supply
 
 Since I got a modular power supply, I had to figure out exactly which cables I needed for all of the components. I hooked up the required cables to the power supply and routed the cables through the holes in the case to the components.

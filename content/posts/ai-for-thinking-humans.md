@@ -46,7 +46,7 @@ In 1958, The New York Times reported on the perceptron and predicted that it wou
 
 ## Multi-layer perceptron
 
-Multi-layer perceptrons (MLPs) are based on the idea of the perceptron, but are more complex. An MLP has at least three layers: the input layer, the "hidden" layer, and the output layer. The input layer takes in numbers as inputs, the hidden layer processes information from the input layer, and the output layer produces the network's output. The additional layers enable the MLP to learn much more complex functions than a perceptron.
+Multi-layer perceptrons (MLPs) are based on the idea of the perceptron, but are more complex. An MLP has at least three layers: the input layer, the "hidden" layer, and the output layer. The input layer takes in numbers as inputs, the hidden layer processes information from the input layer, and the output layer produces the network's output. The additional layers enable the MLP to learn much more complex functions than a perceptron. An MLP with more than three layers is called a "deep neural network" (DNN).
 
 ## Convolutional neural networks (CNN)
 

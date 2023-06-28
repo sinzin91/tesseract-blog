@@ -26,7 +26,7 @@ editPost:
     appendFilePath: true # to append file path to Edit link
 ---
 
-Melanie Michell is an AI researcher and professor at the Santa Fe Institute. In her book "[Artificial Intelligence: A Guide for Thinking Humans](https://www.amazon.com/Artificial-Intelligence-Guide-Thinking-Humans/dp/0374257833)," she seeks to make artificial intelligence understandable for laypeople, and for the most part, achieves that goal. She begins by discussing the history of artificial intelligence, starting from the "perceptron" and working up to deep learning for natural language. Michell explains each concept in concrete terms and apt metaphors, with minimal technical jargon and math. Each “AI string”, heralded by new breakthroughs and followed by breathless claims about potential revolutionary applications just around the corner, are inevitably followed by “AI winters”, where the technology falls short of expectations. She also delves into philosophical concepts such as the alignment problem, the singularity, and consciousness in AI systems.
+Melanie Michell is an AI researcher and professor at the Santa Fe Institute. In her book "[Artificial Intelligence: A Guide for Thinking Humans](https://www.amazon.com/Artificial-Intelligence-Guide-Thinking-Humans/dp/0374257833)," she seeks to make artificial intelligence understandable for laypeople, and for the most part, achieves that goal. She begins by discussing the history of artificial intelligence, starting from the "perceptron" and working up to deep learning for natural language. Michell explains each concept in concrete terms and apt metaphors, with minimal technical jargon and math. Each “AI spring”, heralded by new breakthroughs and followed by breathless claims about potential revolutionary applications just around the corner, are inevitably followed by “AI winters”, where the technology falls short of expectations. She also delves into philosophical concepts such as the alignment problem, the singularity, and consciousness in AI systems.
 
 To quote the end of the book:
 
@@ -40,9 +40,11 @@ Michell describes the perceptron as a single-layer neural network that outputs a
 
 > _To simulate the different strengths of connections to a neuron, Rosenblatt proposed that a numerical weight be assigned to each of a perceptron’s inputs; each input is multiplied by its weight before being added to the sum. A perceptron’s threshold is simply a number set by the programmer._
 
-In 1958, The New York Times reported on the perceptron and predicted that it would "be able to recognize people and call out their names, and instantly translate speech in one language to speech and writing in another." This was one of the first instances of the AI hype cycle that repeats throughout the book and history. However, it was eventually found that the single-layer perceptron could only learn linearly separable problems. The required compute for more layers, and thus more complex problems, did not yet exist. As a result, Marvin Minsky declared perceptrons a "dead-end", and research stalled for decades. This marked the start of the first “AI winter”. Perceptrons are the foundation of the current deep learning revolution, who knows how much we would have progressed had research continued uninterrupted?
+In 1958, The New York Times reported on the perceptron and predicted that it would "be able to recognize people and call out their names, and instantly translate speech in one language to speech and writing in another." This was one of the first instances of the AI hype cycle that repeats throughout the book and history. 
 
 > _Reporting on a press conference Rosenblatt held in July 1958, The New York Times featured this recap: "The Navy revealed the embryo of an electronic computer today that it expects will be able to walk, talk, see, write, reproduce itself, and be conscious of its existence. Later perceptrons will be able to recognize people and call out their names and instantly translate speech in one language to speech and writing in another language, it was predicted."_
+
+However, it was eventually found that the single-layer perceptron could only learn linearly separable problems. The required compute for more layers, and thus more complex problems, did not yet exist. As a result, Marvin Minsky declared perceptrons a "dead-end", and research stalled for decades. This marked the start of the first “AI winter”. Perceptrons are the foundation of the current deep learning revolution, who knows how much we would have progressed had research continued uninterrupted?
 
 ## Multi-layer perceptron
 
@@ -58,9 +60,9 @@ AlexNet was the first to use ConvNets for the 2012 ImageNet competition, achievi
 
 > *AlexNet, named after its main creator, Alex Krizhevsky, then a graduate student at the University of Toronto, supervised by the eminent neural network researcher Geoffrey Hinton. Krizhevsky, working with Hinton and a fellow student, Ilya Sutskever, created a scaled-up version of Yann LeCun’s LeNet from the 1990s; training such a large network was now made possible by increases in computer power*
     
-Although ConvNets are stronger than previous methods, they still have several issues. They can become confused by images that contain multiple objects, miss small objects in an image, and are easily thrown off by slight distortions and abstract representations. Additionally, they have been known to display bias. For example, the Google Photos app infamously tagged an image of two African Americans with the label "gorillas". While CNNs excel at categorization, they still struggle with localization tasks, such as drawing a box around the target object.
+Although ConvNets are stronger than previous methods, they still have several issues. They can become confused by images that contain multiple objects, miss small objects in an image, and are easily thrown off by slight distortions and abstract representations. Additionally, they have been known to display bias. For example, the Google Photos app infamously tagged an image of two African Americans with the label "gorillas". While CNNs excel at categorization, they still struggle with localization tasks, such as drawing a box around the target object. Mitchell also argues that CNNs are not truly "understanding" the images, but rather are just learning to recognize patterns. 
 
-> *If the goal of computer vision is to “get a machine to describe what it sees,” then machines will need to recognize not only objects but also their relationships to one another and how they interact with the world. If the “objects” in question are living beings, the machines will need to know something about their actions, goals, emotions, likely next steps, and all the other aspects that figure into telling the story of a visual scene*
+> *If the goal of computer vision is to “get a machine to describe what it sees,” then machines will need to recognize not only objects but also their relationships to one another and how they interact with the world. If the “objects” in question are living beings, the machines will need to know something about their actions, goals, emotions, likely next steps, and all the other aspects that figure into telling the story of a visual scene.*
 
 ## Reinforcement Learning
 
@@ -68,8 +70,6 @@ Unlike supervised learning, reinforcement learning doesn't require labeled data 
 
 > *The promise of reinforcement learning is that the agent—here our robo-dog—can learn flexible strategies on its own simply by performing actions in the world and occasionally receiving rewards (that is, reinforcement) without humans having to manually write rules or directly teach the agent every possible circumstance.*
     
-    
-
 DeepMind used deep reinforcement learning to first beat Atari games, and then famously the board game "Go" with AlphaGo. Mitchell describes it as “the ultimate idiot savant”, since it can only play Go very well but that intelligence fails to generalize to other tasks. 
 
 ## Natural language processing (NLP)
@@ -100,11 +100,19 @@ Mitchell shares her thoughts on the "singularity": a future where the pace of te
 
 > *Kurzweil’s ideas were spurred by the mathematician I. J. Good’s speculations on the potential of an intelligence explosion: “Let an ultraintelligent machine be defined as a machine that can far surpass all the intellectual activities of any man however clever. Since the design of machines is one of these intellectual activities, an ultraintelligent machine could design even better machines; there would then unquestionably be an ‘intelligence explosion,’ and the intelligence of man would be left far behind.*
 
-I was inspired to pursue a career in technology after reading his book "The Singularity is Near" in college. Mitchell makes it clear that she does not believe in the Singularity. She comes close to calling Kurweil a quack, though indirectly.
+I was inspired to pursue a career in technology after reading his book "The Singularity is Near" in college. Mitchell makes it clear that she does not believe in the Singularity.
 
 ## Lack of common sense knowledge
 
 One of the core issues with current machine learning systems from Michell's perspective is the lack of real understanding in these algorithms. Despite this lack, she is surprised that language translation has reached such a high level. These algorithms lack "common sense" knowledge, which is something that humans implicitly know and therefore do not explicitly write down. Instead, the machine learns from what it observes in the data, which may not align with what humans would observe. A good example of this is the *Winograd schemas*, which are sentences where changing one word of the question changes the expected answer.
+
+> *SENTENCE 1: “The city council refused the demonstrators a permit because they feared violence.”
+QUESTION: Who feared violence?
+A. The city council B. The demonstrators
+SENTENCE 2: “The city council refused the demonstrators a permit because they advocated violence.”
+QUESTION: Who advocated violence?
+A. The city council B. The demonstrators
+Sentences 1 and 2 differ by only one word (feared / advocated), but that single word determines the answer to the question. In sentence 1 the pronoun they refers to the city council, and in sentence 2 they refers to the demonstrators. How do we humans know this? We rely on our background knowledge about how society works: we know that demonstrators are the ones with a grievance and that they sometimes advocate or instigate violence at a protest.*
 
 Michell tells the colorful story of "Clever Hans". This horse gained fame because people believed it could "calculate". When asked a question like "What is 5 times 3?", it would tap its hoof the correct number of times. However, it was eventually revealed that the horse did not actually understand math. Instead, it was responding to subtle cues given by the questioner. Michell uses this as a metaphor for something that appears to understand, but in reality, does not understand anything at all. This still holds true today, as even the best LLMs like GPT-4 are still prone to hallucinate, and certain prompts can illicit responses that make it clear that it currently [has no common sense knowledge](https://arxiv.org/pdf/2302.08399.pdf).
 
@@ -132,4 +140,4 @@ It's an interesting thought that what are perceived to be human limitations - su
 
 ## Closing thoughts
 
-Mitchell expresses a healthy dose of skepticism about the capabilities of AI, which may serve as a good antidote to the current massive hype cycle. Given AI's history, it's likely that we'll experience another "AI winter" where the touted benefits never materialize. However, as the book contains the word "guide" in its title, it would be preferable if it were not biased in either direction. While it's important to solve current issues with "dumb" AI, I believe that mitigating existential risks from AI is also necessary. I lean more towards the positive end of the AI doomer to AI enabled utopia spectrum, and believe that AGI aligned with human values may be the last invention humans need to make. Despite this, I would recommend this book to non-technical friends who want an accessible primer on the field of artificial intelligence.
+Mitchell expresses a healthy dose of skepticism about the capabilities of AI, which may serve as a good antidote to the current massive hype cycle. Given AI's history, it's likely that we'll experience another "AI winter" where the touted benefits never materialize. However, as the book contains the word "guide" in its title, it would be preferable if it were not biased in either direction. While it's important to solve current issues with "dumb" AI, I believe that mitigating existential risks from AI is also necessary. I lean more towards the positive end of the AI doomer to AI enabled utopia spectrum, and believe that AGI aligned with human values may be the last invention humans need to make. I would recommend this book to non-technical friends who want an accessible primer on the field of artificial intelligence.

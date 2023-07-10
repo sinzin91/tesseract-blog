@@ -1,447 +1,62 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>GPT-4 made me a GPT powered movie search app | Tenzin&#39;s Blog</title>
-<meta name="keywords" content="gpt, search, project">
-<meta name="description" content="Exploring the unreasonable effectiveness of building apps with GPT-4">
-<meta name="author" content="Tenzin Wangdhen">
-<link rel="canonical" href="https://t12n.substack.com/p/gpt-4-made-me-a-gpt-powered-movie">
-<meta name="google-site-verification" content="XYZabc">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.253e49683a95bbce0a3d8bc7080faa03f4e13d02880ee2cc370f949fb9d678f5.css" integrity="sha256-JT5JaDqVu84KPYvHCA&#43;qA/ThPQKIDuLMNw&#43;Un7nWePU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="16x16" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
-<link rel="apple-touch-icon" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
-<link rel="mask-icon" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-</noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XT1JG5PZ2M"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-XT1JG5PZ2M', { 'anonymize_ip': false });
-}
-</script>
-<meta property="og:title" content="GPT-4 made me a GPT powered movie search app" />
-<meta property="og:description" content="Exploring the unreasonable effectiveness of building apps with GPT-4" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/" /><meta property="og:image" content="https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-29T19:11:16-07:00" />
-<meta property="article:modified_time" content="2023-03-29T19:11:16-07:00" /><meta property="og:site_name" content="Tenzin&#39;s Blog" />
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
-
-<meta name="twitter:title" content="GPT-4 made me a GPT powered movie search app"/>
-<meta name="twitter:description" content="Exploring the unreasonable effectiveness of building apps with GPT-4"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Posts",
-      "item": "https://tenzinwangdhen.com/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "GPT-4 made me a GPT powered movie search app",
-      "item": "https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "GPT-4 made me a GPT powered movie search app",
-  "name": "GPT-4 made me a GPT powered movie search app",
-  "description": "Exploring the unreasonable effectiveness of building apps with GPT-4",
-  "keywords": [
-    "gpt", "search", "project"
-  ],
-  "articleBody": "TLDR: I built a semantic movie search app with GPT-4. You can check it out here: https://moviesgpt.net/. And here’s the Github repo: https://github.com/sinzin91/moviesGPT\nthe hero keeps forgetting who he is\nIdea I’ve been thinking a lot about potential products that one can build around LLMs. One idea I mentioned jokingly to some friends was to use GPT as a natural language interface to a movies API.\nIn theory, I thought, you could ask GPT about movies semantically, meaning you could search based on what the movie is about or its content, instead of just raw keyword search. For example, I could search for “movies where all the main characters die” and get back “The Departed”. Then I could use the response to query a movies API like The Movies Database. Google is surprisingly bad at this, returning links to listicles instead of the movies themselves.\nThe current way to do this, and the one that even ChatGPT recommends, is to gather data on all the movies, generate word embeddings on that data, store it in a Vector database, and then query using something like cosine similarity. But GPT-3, having been trained on all internet data, has “seen” every movie and discussion around every movie already. It already has the embeddings. And it already “knows” how to find those movies given the right prompt.\nImplementation With this rough sketch of an idea, I sipped some coffee and entered this into GPT-4:\nYou are a master professional front end React developer. Show how you would build a front end that includes a search bar at the top. Below the search bar are six cards which include the movie cover with the title below it. Searches hit The Movie Database api's search endpoint with the search term. The results from the API call are used to update the cards below the search bar. The site uses a black and blue, dark mode style theme, with minimal UI components. I basically just wrote that off the cuff with no large amount of premeditation, and got back a very reasonable starting place for my app: Note: I am a hobbyist front-end engineer at best and only know enough React and Javascript to be slightly dangerous. I absolutely hate CSS, and can’t remember the difference between align-items and justify-content to save my life.\nTo my surprise, I was able to just copy paste the code from GPT-4 to get a decent looking site!\nI then asked to change it so that it calls OpenAI first:\nOk great! Now I want you to change it so that searches are sent to OpenAI's text-davinci-003 API. Hit The Movies Database API with each element from the returned array, and render those movies in the MovieGrid. Interestingly, GPT generated a prompt from my prompt:\nconst response = await openai.Completion.create( { engine: \"text-davinci-003\", prompt: `Find 6 movie titles related to \"${searchTerm}\"` }) This prompt is not precise enough though, so here I actually had to do some work:\nReturn an array of movie titles that best match this search term, ordered from most to least relevant. Generate up to 16 titles. If you are unable to answer the question, start your response with Sorry. Example: prompt: \"movies with brando\" response: [\"The Godfather\", \"The Godfather: Part II\", \"Apocalypse Now\", \"The Wild One\"] prompt: ${searchTerm} response: I’m giving GPT an example of the kind of response I expect. In this case, I want it to create a valid array of movie titles.\nWith this change, I had the first working POC of my original idea! The last time experienced such a sensation of god-like empowerment might have been unlocking robots in Factorio.\nin Factorio, eventually you can have robots automatically build things based on blueprints\nWhew, okay, great. Now what?\nI showed the app to a friend, and he mentioned that it looked terrible on mobile. So I asked GPT-4 to “change the CSS so the website works well on mobile phones.” Lo and behold, after copying over the CSS directly, the site worked flawlessly on mobile. No futzing with media queries for me!\nI also realized that I wanted to add star ratings to these movies to get a sense of their popularity. The TMDb API returns “vote_ratings,” which is a number from 0 to 10. I found the distribution of “vote_ratings” here: https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb.\nAdding a stars component was also mostly copy/paste once I wrote the prompt:\nThe movie database api returns a `vote_average` in the response. I want a \"Stars\" component below each movie title that gives gives the movie 1 star if `vote_average` is between 0 to 2, 2 stars if it is between 2 to 4, etc. If a movie got one star, there should be a single bright yellow star and four grey stars in the component. I also wanted something to happen when I clicked on the cards. Maybe show the movie summary, release date, etc. Here’s the prompt: One thing that was bothering me in terms of practical usability was the lack of Rotten Tomatoes ratings. Often, that’s the first thing I check when deciding whether to watch a given movie. Unfortunately, Rotten Tomatoes charges $60k/year (!!) for access to their API. Then I had the idea of asking GPT for the Rotten Tomatoes ratings. To my surprise, it does seem to have a sense for the ratings. Although they are not fully accurate, they seem to be generally in the right ballpark.\nI updated my prompt to generate a new data structure that includes the Rotten Tomatoes ratings:\nReturn a JSON object movie titles that best match this search term and their Rotten Tomatoes tomatometer score, ordered from most to least relevant. Get the most up to date and accurate Rotten Tomatoes tomatometer score. Generate up to 12 titles. If you are unable to answer the question, return a string that starts with Sorry. The response must be a valid JSON. Example: prompt: \"movies with brando\" response: [ { \"title\": \"The Godfather\", \"rottenTomatoesScore\": 98 }, { \"title\": \"The Godfather: Part II\", \"rottenTomatoesScore\": 97 }, { \"title\": \"Apocalypse Now\", \"rottenTomatoesScore\": 96 }, { \"title\": \"The Wild One\", \"rottenTomatoesScore\": 85 } ] prompt: ${searchTerm} response: I also had GPT make me the new Rotten Tomatoes rating component:\nNow I can safely avoid these movies!\nI was surprised by how well semantic search works out of the box with GPT. However, there are some limitations. One is that it only recognizes movies up to the date it was trained, which was late 2021. When asked about movies released after that, it simply responds that it doesn’t know. This issue may be addressed by the Plugins that OpenAI announced, which would allow GPT to call live APIs to fetch real-time data. One could also probably create a fine-tuned model that is trained on more recent movies.\ncan’t find movies from 2022\nI tried using gpt-3.5-turbo, but that model seemed to be much more prudish, refusing to respond to searches on movies deemed unseemly by the RLHF moderators. So I switched back to text-davinci-003 for now.\nLimitations To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don’t think someone without experience in React or Javascript would be able to replicate this. GPT still gets some things wrong, like telling me to use outdated libraries or generating wonky styles (who wants a blue background on a header??). But it’s getting pretty close.\nIn more ambitious projects, I’ve noticed that GPT starts to “forget” the code it had previously suggested. So when I ask to change some function, it spits out a new version of the file that has a completely different implementation and method names. Maybe this is a result of the limited context window. I’ve gotten around this by pasting in the code again and asking it to make the change given that context.\nClosing Thoughts I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn’t do well with big picture decisions, but knows how to implement very well given the right direction. To be fair, I’m not doing anything groundbreaking here. There must be tons of sites like this in the pretraining data, so it’s relatively easy for GPT to generate the relevant code.\nIt was also much easier to get into that elusive flow state while hacking this out. The dopamine hits from thinking of a feature and seeing it in action just kept coming, without the usual frustrations of not knowing how a particular function works and having to look it up. This makes coding fun again.\nIt’s clear that I am the bottleneck in this process. I’m sitting here copying and pasting from GPT with some slight modifications. It seems like the natural progression here is to have GPT directly create the code based on my prompts. I imagine you could build a more advanced “Create React App” that generates and updates the app based on your prompts.\nI hope this inspires people to pursue building those apps they always wanted to build, but couldn’t find time for. GPT still does not know what app to build and why it should build it, which is where we come in. Let a thousand flowers bloom!\n",
-  "wordCount" : "1552",
-  "inLanguage": "en",
-  "datePublished": "2023-03-29T19:11:16-07:00",
-  "dateModified": "2023-03-29T19:11:16-07:00",
-  "author":{
-    "@type": "Person",
-    "name": "Tenzin Wangdhen"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Tenzin's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E"
-    }
-  }
-}
-</script>
-</head>
-
-<body class=" dark" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://tenzinwangdhen.com" accesskey="h" title="Tenzin&#39;s Blog (Alt + H)">
-                <img src="https://tenzinwangdhen.com/apple-touch-icon.png" alt="" aria-label="logo"
-                    height="35">Tenzin&#39;s Blog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://tenzinwangdhen.com/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://tenzinwangdhen.com/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://tenzinwangdhen.com/archives/" title="Archives">
-                    <span>Archives</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="https://tenzinwangdhen.com">Home</a>&nbsp;»&nbsp;<a href="https://tenzinwangdhen.com/posts/">Posts</a></div>
-    <h1 class="post-title">
-      GPT-4 made me a GPT powered movie search app
-    </h1>
-    <div class="post-description">
-      Exploring the unreasonable effectiveness of building apps with GPT-4
-    </div>
-    <div class="post-meta"><span title='2023-03-29 19:11:16 -0700 -0700'>March 29, 2023</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1552 words&nbsp;·&nbsp;Tenzin Wangdhen&nbsp;|&nbsp;<a href="https://github.com/sinzin91/tesseract-blog/blob/master/content/posts/semantic-movie-search-with-gpt.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
-
-</div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
-
-        <div class="inner"><ul>
-                <li>
-                    <a href="#idea" aria-label="Idea">Idea</a></li>
-                <li>
-                    <a href="#implementation" aria-label="Implementation">Implementation</a></li>
-                <li>
-                    <a href="#limitations" aria-label="Limitations">Limitations</a></li>
-                <li>
-                    <a href="#closing-thoughts" aria-label="Closing Thoughts">Closing Thoughts</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><p>TLDR:
-I built a semantic movie search app with GPT-4. You can check it out here: <a href="https://moviesgpt.net/">https://moviesgpt.net/</a>. And here&rsquo;s the Github repo: <a href="https://github.com/sinzin91/moviesGPT">https://github.com/sinzin91/moviesGPT</a></p>
-<p><img loading="lazy" src="/images/moviesgpt/moviesgpt-demo.gif" alt="MoviesGPT Demo"  />
-
-<em>the hero keeps forgetting who he is</em></p>
-<h3 id="idea">Idea<a hidden class="anchor" aria-hidden="true" href="#idea">#</a></h3>
-<p>I&rsquo;ve been thinking a lot about potential products that one can build around LLMs. One idea I mentioned jokingly to some friends was to use GPT as a natural language interface to a movies API.</p>
-<p>In theory, I thought, you could ask GPT about movies semantically, meaning you could search based on what the movie is about or its content, instead of just raw keyword search. For example, I could search for &ldquo;movies where all the main characters die&rdquo; and get back &ldquo;The Departed&rdquo;. Then I could use the response to query a movies API like The Movies Database. Google is surprisingly bad at this, returning links to listicles instead of the movies themselves.</p>
-<p>The current way to do this, and the one that even ChatGPT recommends, is to gather data on all the movies, generate <a href="https://en.wikipedia.org/wiki/Word_embedding">word embeddings</a> on that data, store it in a Vector database, and then query using something like cosine similarity. But GPT-3, having been trained on all internet data, has &ldquo;seen&rdquo; every movie and discussion around every movie already. It already has the embeddings. And it already &ldquo;knows&rdquo; how to find those movies given the right prompt.</p>
-<h3 id="implementation">Implementation<a hidden class="anchor" aria-hidden="true" href="#implementation">#</a></h3>
-<p>With this rough sketch of an idea, I sipped some coffee and entered this into GPT-4:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">You are a master professional front end React developer. 
-</span></span><span class="line"><span class="cl">Show how you would build a front end that includes a search bar at the top. 
-</span></span><span class="line"><span class="cl">Below the search bar are six cards which include the movie cover with the title below it. 
-</span></span><span class="line"><span class="cl">Searches hit The Movie Database api&#39;s search endpoint with the search term. 
-</span></span><span class="line"><span class="cl">The results from the API call are used to update the cards below the search bar. 
-</span></span><span class="line"><span class="cl">The site uses a black and blue, dark mode style theme, with minimal UI components.
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>GPT-4 made me a GPT powered movie search app | Tenzin's Blog</title><meta name=keywords content="gpt,search,project"><meta name=description content="Exploring the unreasonable effectiveness of building apps with GPT-4"><meta name=author content="Tenzin Wangdhen"><link rel=canonical href=https://t12n.substack.com/p/gpt-4-made-me-a-gpt-powered-movie><meta name=google-site-verification content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.253e49683a95bbce0a3d8bc7080faa03f4e13d02880ee2cc370f949fb9d678f5.css integrity="sha256-JT5JaDqVu84KPYvHCA+qA/ThPQKIDuLMNw+Un7nWePU=" rel="preload stylesheet" as=style><link rel=icon href=https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-1LK2EC2CML"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-1LK2EC2CML",{anonymize_ip:!1})}</script><meta property="og:title" content="GPT-4 made me a GPT powered movie search app"><meta property="og:description" content="Exploring the unreasonable effectiveness of building apps with GPT-4"><meta property="og:type" content="article"><meta property="og:url" content="https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/"><meta property="og:image" content="https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-03-29T19:11:16-07:00"><meta property="article:modified_time" content="2023-03-29T19:11:16-07:00"><meta property="og:site_name" content="Tenzin's Blog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="GPT-4 made me a GPT powered movie search app"><meta name=twitter:description content="Exploring the unreasonable effectiveness of building apps with GPT-4"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://tenzinwangdhen.com/posts/"},{"@type":"ListItem","position":3,"name":"GPT-4 made me a GPT powered movie search app","item":"https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"GPT-4 made me a GPT powered movie search app","name":"GPT-4 made me a GPT powered movie search app","description":"Exploring the unreasonable effectiveness of building apps with GPT-4","keywords":["gpt","search","project"],"articleBody":"TLDR: I built a semantic movie search app with GPT-4. You can check it out here: https://moviesgpt.net/. And here’s the Github repo: https://github.com/sinzin91/moviesGPT\nthe hero keeps forgetting who he is\nIdea I’ve been thinking a lot about potential products that one can build around LLMs. One idea I mentioned jokingly to some friends was to use GPT as a natural language interface to a movies API.\nIn theory, I thought, you could ask GPT about movies semantically, meaning you could search based on what the movie is about or its content, instead of just raw keyword search. For example, I could search for “movies where all the main characters die” and get back “The Departed”. Then I could use the response to query a movies API like The Movies Database. Google is surprisingly bad at this, returning links to listicles instead of the movies themselves.\nThe current way to do this, and the one that even ChatGPT recommends, is to gather data on all the movies, generate word embeddings on that data, store it in a Vector database, and then query using something like cosine similarity. But GPT-3, having been trained on all internet data, has “seen” every movie and discussion around every movie already. It already has the embeddings. And it already “knows” how to find those movies given the right prompt.\nImplementation With this rough sketch of an idea, I sipped some coffee and entered this into GPT-4:\nYou are a master professional front end React developer. Show how you would build a front end that includes a search bar at the top. Below the search bar are six cards which include the movie cover with the title below it. Searches hit The Movie Database api's search endpoint with the search term. The results from the API call are used to update the cards below the search bar. The site uses a black and blue, dark mode style theme, with minimal UI components. I basically just wrote that off the cuff with no large amount of premeditation, and got back a very reasonable starting place for my app: Note: I am a hobbyist front-end engineer at best and only know enough React and Javascript to be slightly dangerous. I absolutely hate CSS, and can’t remember the difference between align-items and justify-content to save my life.\nTo my surprise, I was able to just copy paste the code from GPT-4 to get a decent looking site!\nI then asked to change it so that it calls OpenAI first:\nOk great! Now I want you to change it so that searches are sent to OpenAI's text-davinci-003 API. Hit The Movies Database API with each element from the returned array, and render those movies in the MovieGrid. Interestingly, GPT generated a prompt from my prompt:\nconst response = await openai.Completion.create( { engine: \"text-davinci-003\", prompt: `Find 6 movie titles related to \"${searchTerm}\"` }) This prompt is not precise enough though, so here I actually had to do some work:\nReturn an array of movie titles that best match this search term, ordered from most to least relevant. Generate up to 16 titles. If you are unable to answer the question, start your response with Sorry. Example: prompt: \"movies with brando\" response: [\"The Godfather\", \"The Godfather: Part II\", \"Apocalypse Now\", \"The Wild One\"] prompt: ${searchTerm} response: I’m giving GPT an example of the kind of response I expect. In this case, I want it to create a valid array of movie titles.\nWith this change, I had the first working POC of my original idea! The last time experienced such a sensation of god-like empowerment might have been unlocking robots in Factorio.\nin Factorio, eventually you can have robots automatically build things based on blueprints\nWhew, okay, great. Now what?\nI showed the app to a friend, and he mentioned that it looked terrible on mobile. So I asked GPT-4 to “change the CSS so the website works well on mobile phones.” Lo and behold, after copying over the CSS directly, the site worked flawlessly on mobile. No futzing with media queries for me!\nI also realized that I wanted to add star ratings to these movies to get a sense of their popularity. The TMDb API returns “vote_ratings,” which is a number from 0 to 10. I found the distribution of “vote_ratings” here: https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb.\nAdding a stars component was also mostly copy/paste once I wrote the prompt:\nThe movie database api returns a `vote_average` in the response. I want a \"Stars\" component below each movie title that gives gives the movie 1 star if `vote_average` is between 0 to 2, 2 stars if it is between 2 to 4, etc. If a movie got one star, there should be a single bright yellow star and four grey stars in the component. I also wanted something to happen when I clicked on the cards. Maybe show the movie summary, release date, etc. Here’s the prompt: One thing that was bothering me in terms of practical usability was the lack of Rotten Tomatoes ratings. Often, that’s the first thing I check when deciding whether to watch a given movie. Unfortunately, Rotten Tomatoes charges $60k/year (!!) for access to their API. Then I had the idea of asking GPT for the Rotten Tomatoes ratings. To my surprise, it does seem to have a sense for the ratings. Although they are not fully accurate, they seem to be generally in the right ballpark.\nI updated my prompt to generate a new data structure that includes the Rotten Tomatoes ratings:\nReturn a JSON object movie titles that best match this search term and their Rotten Tomatoes tomatometer score, ordered from most to least relevant. Get the most up to date and accurate Rotten Tomatoes tomatometer score. Generate up to 12 titles. If you are unable to answer the question, return a string that starts with Sorry. The response must be a valid JSON. Example: prompt: \"movies with brando\" response: [ { \"title\": \"The Godfather\", \"rottenTomatoesScore\": 98 }, { \"title\": \"The Godfather: Part II\", \"rottenTomatoesScore\": 97 }, { \"title\": \"Apocalypse Now\", \"rottenTomatoesScore\": 96 }, { \"title\": \"The Wild One\", \"rottenTomatoesScore\": 85 } ] prompt: ${searchTerm} response: I also had GPT make me the new Rotten Tomatoes rating component:\nNow I can safely avoid these movies!\nI was surprised by how well semantic search works out of the box with GPT. However, there are some limitations. One is that it only recognizes movies up to the date it was trained, which was late 2021. When asked about movies released after that, it simply responds that it doesn’t know. This issue may be addressed by the Plugins that OpenAI announced, which would allow GPT to call live APIs to fetch real-time data. One could also probably create a fine-tuned model that is trained on more recent movies.\ncan’t find movies from 2022\nI tried using gpt-3.5-turbo, but that model seemed to be much more prudish, refusing to respond to searches on movies deemed unseemly by the RLHF moderators. So I switched back to text-davinci-003 for now.\nLimitations To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don’t think someone without experience in React or Javascript would be able to replicate this. GPT still gets some things wrong, like telling me to use outdated libraries or generating wonky styles (who wants a blue background on a header??). But it’s getting pretty close.\nIn more ambitious projects, I’ve noticed that GPT starts to “forget” the code it had previously suggested. So when I ask to change some function, it spits out a new version of the file that has a completely different implementation and method names. Maybe this is a result of the limited context window. I’ve gotten around this by pasting in the code again and asking it to make the change given that context.\nClosing Thoughts I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn’t do well with big picture decisions, but knows how to implement very well given the right direction. To be fair, I’m not doing anything groundbreaking here. There must be tons of sites like this in the pretraining data, so it’s relatively easy for GPT to generate the relevant code.\nIt was also much easier to get into that elusive flow state while hacking this out. The dopamine hits from thinking of a feature and seeing it in action just kept coming, without the usual frustrations of not knowing how a particular function works and having to look it up. This makes coding fun again.\nIt’s clear that I am the bottleneck in this process. I’m sitting here copying and pasting from GPT with some slight modifications. It seems like the natural progression here is to have GPT directly create the code based on my prompts. I imagine you could build a more advanced “Create React App” that generates and updates the app based on your prompts.\nI hope this inspires people to pursue building those apps they always wanted to build, but couldn’t find time for. GPT still does not know what app to build and why it should build it, which is where we come in. Let a thousand flowers bloom!\n","wordCount":"1552","inLanguage":"en","datePublished":"2023-03-29T19:11:16-07:00","dateModified":"2023-03-29T19:11:16-07:00","author":{"@type":"Person","name":"Tenzin Wangdhen"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://tenzinwangdhen.com/posts/semantic-movie-search-with-gpt/"},"publisher":{"@type":"Organization","name":"Tenzin's Blog","logo":{"@type":"ImageObject","url":"https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://tenzinwangdhen.com accesskey=h title="Tenzin's Blog (Alt + H)"><img src=https://tenzinwangdhen.com/apple-touch-icon.png alt aria-label=logo height=35>Tenzin's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://tenzinwangdhen.com/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://tenzinwangdhen.com/tags/ title=Tags><span>Tags</span></a></li><li><a href=https://tenzinwangdhen.com/archives/ title=Archives><span>Archives</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://tenzinwangdhen.com>Home</a>&nbsp;»&nbsp;<a href=https://tenzinwangdhen.com/posts/>Posts</a></div><h1 class=post-title>GPT-4 made me a GPT powered movie search app</h1><div class=post-description>Exploring the unreasonable effectiveness of building apps with GPT-4</div><div class=post-meta><span title='2023-03-29 19:11:16 -0700 -0700'>March 29, 2023</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1552 words&nbsp;·&nbsp;Tenzin Wangdhen&nbsp;|&nbsp;<a href=https://github.com/sinzin91/tesseract-blog/blob/master/content/posts/semantic-movie-search-with-gpt.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#idea aria-label=Idea>Idea</a></li><li><a href=#implementation aria-label=Implementation>Implementation</a></li><li><a href=#limitations aria-label=Limitations>Limitations</a></li><li><a href=#closing-thoughts aria-label="Closing Thoughts">Closing Thoughts</a></li></ul></div></details></div><div class=post-content><p>TLDR:
+I built a semantic movie search app with GPT-4. You can check it out here: <a href=https://moviesgpt.net/>https://moviesgpt.net/</a>. And here&rsquo;s the Github repo: <a href=https://github.com/sinzin91/moviesGPT>https://github.com/sinzin91/moviesGPT</a></p><p><img loading=lazy src=/images/moviesgpt/moviesgpt-demo.gif alt="MoviesGPT Demo">
+<em>the hero keeps forgetting who he is</em></p><h3 id=idea>Idea<a hidden class=anchor aria-hidden=true href=#idea>#</a></h3><p>I&rsquo;ve been thinking a lot about potential products that one can build around LLMs. One idea I mentioned jokingly to some friends was to use GPT as a natural language interface to a movies API.</p><p>In theory, I thought, you could ask GPT about movies semantically, meaning you could search based on what the movie is about or its content, instead of just raw keyword search. For example, I could search for &ldquo;movies where all the main characters die&rdquo; and get back &ldquo;The Departed&rdquo;. Then I could use the response to query a movies API like The Movies Database. Google is surprisingly bad at this, returning links to listicles instead of the movies themselves.</p><p>The current way to do this, and the one that even ChatGPT recommends, is to gather data on all the movies, generate <a href=https://en.wikipedia.org/wiki/Word_embedding>word embeddings</a> on that data, store it in a Vector database, and then query using something like cosine similarity. But GPT-3, having been trained on all internet data, has &ldquo;seen&rdquo; every movie and discussion around every movie already. It already has the embeddings. And it already &ldquo;knows&rdquo; how to find those movies given the right prompt.</p><h3 id=implementation>Implementation<a hidden class=anchor aria-hidden=true href=#implementation>#</a></h3><p>With this rough sketch of an idea, I sipped some coffee and entered this into GPT-4:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>You are a master professional front end React developer. 
+</span></span><span class=line><span class=cl>Show how you would build a front end that includes a search bar at the top. 
+</span></span><span class=line><span class=cl>Below the search bar are six cards which include the movie cover with the title below it. 
+</span></span><span class=line><span class=cl>Searches hit The Movie Database api&#39;s search endpoint with the search term. 
+</span></span><span class=line><span class=cl>The results from the API call are used to update the cards below the search bar. 
+</span></span><span class=line><span class=cl>The site uses a black and blue, dark mode style theme, with minimal UI components.
 </span></span></code></pre></div><p>I basically just wrote that off the cuff with no large amount of premeditation, and got back a very reasonable starting place for my app:
-<img loading="lazy" src="/images/moviesgpt/gpt-create-moviesgpt.png" alt="MoviesGPT Create React App"  />
-</p>
-<blockquote>
-<p><em>Note</em>: I am a hobbyist front-end engineer at best and only know enough React and Javascript to be slightly dangerous. I absolutely <em>hate</em> CSS, and can&rsquo;t remember the difference between <code>align-items</code> and <code>justify-content</code> to save my life.</p>
-</blockquote>
-<p>To my surprise, I was able to just copy paste the code from GPT-4 to get a decent looking site!</p>
-<p>I then asked to change it so that it calls OpenAI first:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Ok great! 
-</span></span><span class="line"><span class="cl">Now I want you to change it so that searches are sent to OpenAI&#39;s 
-</span></span><span class="line"><span class="cl">text-davinci-003 API. Hit The Movies Database API with each element 
-</span></span><span class="line"><span class="cl">from the returned array, and render those movies in the MovieGrid.
-</span></span></code></pre></div><p>Interestingly, GPT generated a prompt from my prompt:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">openai</span><span class="p">.</span><span class="nx">Completion</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
-</span></span><span class="line"><span class="cl">    <span class="nx">engine</span><span class="o">:</span> <span class="s2">&#34;text-davinci-003&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">    <span class="nx">prompt</span><span class="o">:</span> <span class="sb">`Find 6 movie titles related to &#34;</span><span class="si">${</span><span class="nx">searchTerm</span><span class="si">}</span><span class="sb">&#34;`</span>
-</span></span><span class="line"><span class="cl">  <span class="p">})</span>
-</span></span></code></pre></div><p>This prompt is not precise enough though, so here I actually had to do some work:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Return</span> <span class="nx">an</span> <span class="nx">array</span> <span class="k">of</span> <span class="nx">movie</span> <span class="nx">titles</span> <span class="nx">that</span> <span class="nx">best</span> <span class="nx">match</span> <span class="k">this</span> <span class="nx">search</span> <span class="nx">term</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl"><span class="nx">ordered</span> <span class="nx">from</span> <span class="nx">most</span> <span class="nx">to</span> <span class="nx">least</span> <span class="nx">relevant</span><span class="p">.</span> <span class="nx">Generate</span> <span class="nx">up</span> <span class="nx">to</span> <span class="mi">16</span> <span class="nx">titles</span><span class="p">.</span>
-</span></span><span class="line"><span class="cl"><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">unable</span> <span class="nx">to</span> <span class="nx">answer</span> <span class="nx">the</span> <span class="nx">question</span><span class="p">,</span> <span class="nx">start</span> <span class="nx">your</span> <span class="nx">response</span> <span class="kd">with</span> <span class="nx">Sorry</span><span class="p">.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Example</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl"><span class="nx">prompt</span><span class="o">:</span> <span class="s2">&#34;movies with brando&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">response</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;The Godfather&#34;</span><span class="p">,</span> <span class="s2">&#34;The Godfather: Part II&#34;</span><span class="p">,</span> <span class="s2">&#34;Apocalypse Now&#34;</span><span class="p">,</span> <span class="s2">&#34;The Wild One&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">prompt</span><span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">searchTerm</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="nx">response</span><span class="o">:</span>
-</span></span></code></pre></div><p>I&rsquo;m giving GPT an example of the kind of response I expect. In this case, I want it to create a valid array of movie titles.</p>
-<p>With this change, I had the first working POC of my original idea! The last time experienced such a sensation of god-like empowerment might have been unlocking robots in <a href="https://www.factorio.com/">Factorio</a>.</p>
-<p><img loading="lazy" src="/images/moviesgpt/factorio-robots.png" alt="Factorio Robots"  />
-
-<em>in Factorio, eventually you can have robots automatically build things based on blueprints</em></p>
-<p>Whew, okay, great. Now what?</p>
-<p>I showed the app to a friend, and he mentioned that it looked terrible on mobile. So I asked GPT-4 to &ldquo;change the CSS so the website works well on mobile phones.&rdquo; Lo and behold, after copying over the CSS directly, the site worked flawlessly on mobile. No futzing with media queries for me!</p>
-<p>I also realized that I wanted to add star ratings to these movies to get a sense of their popularity. The TMDb API returns &ldquo;vote_ratings,&rdquo; which is a number from 0 to 10. I found the distribution of &ldquo;vote_ratings&rdquo; here: <a href="https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb">https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb</a>.</p>
-<p>Adding a stars component was also mostly copy/paste once I wrote the prompt:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">The movie database api returns a `vote_average` in the response. 
-</span></span><span class="line"><span class="cl">I want a &#34;Stars&#34; component below each movie title that gives gives 
-</span></span><span class="line"><span class="cl">the movie 1 star if `vote_average` is between 0 to 2, 2 stars if it 
-</span></span><span class="line"><span class="cl">is between 2 to 4, etc. If a movie got one star, there should be a 
-</span></span><span class="line"><span class="cl">single bright yellow star and four grey stars in the component.
+<img loading=lazy src=/images/moviesgpt/gpt-create-moviesgpt.png alt="MoviesGPT Create React App"></p><blockquote><p><em>Note</em>: I am a hobbyist front-end engineer at best and only know enough React and Javascript to be slightly dangerous. I absolutely <em>hate</em> CSS, and can&rsquo;t remember the difference between <code>align-items</code> and <code>justify-content</code> to save my life.</p></blockquote><p>To my surprise, I was able to just copy paste the code from GPT-4 to get a decent looking site!</p><p>I then asked to change it so that it calls OpenAI first:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Ok great! 
+</span></span><span class=line><span class=cl>Now I want you to change it so that searches are sent to OpenAI&#39;s 
+</span></span><span class=line><span class=cl>text-davinci-003 API. Hit The Movies Database API with each element 
+</span></span><span class=line><span class=cl>from the returned array, and render those movies in the MovieGrid.
+</span></span></code></pre></div><p>Interestingly, GPT generated a prompt from my prompt:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>response</span> <span class=o>=</span> <span class=kr>await</span> <span class=nx>openai</span><span class=p>.</span><span class=nx>Completion</span><span class=p>.</span><span class=nx>create</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> 
+</span></span><span class=line><span class=cl>    <span class=nx>engine</span><span class=o>:</span> <span class=s2>&#34;text-davinci-003&#34;</span><span class=p>,</span> 
+</span></span><span class=line><span class=cl>    <span class=nx>prompt</span><span class=o>:</span> <span class=sb>`Find 6 movie titles related to &#34;</span><span class=si>${</span><span class=nx>searchTerm</span><span class=si>}</span><span class=sb>&#34;`</span>
+</span></span><span class=line><span class=cl>  <span class=p>})</span>
+</span></span></code></pre></div><p>This prompt is not precise enough though, so here I actually had to do some work:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>Return</span> <span class=nx>an</span> <span class=nx>array</span> <span class=k>of</span> <span class=nx>movie</span> <span class=nx>titles</span> <span class=nx>that</span> <span class=nx>best</span> <span class=nx>match</span> <span class=k>this</span> <span class=nx>search</span> <span class=nx>term</span><span class=p>,</span> 
+</span></span><span class=line><span class=cl><span class=nx>ordered</span> <span class=nx>from</span> <span class=nx>most</span> <span class=nx>to</span> <span class=nx>least</span> <span class=nx>relevant</span><span class=p>.</span> <span class=nx>Generate</span> <span class=nx>up</span> <span class=nx>to</span> <span class=mi>16</span> <span class=nx>titles</span><span class=p>.</span>
+</span></span><span class=line><span class=cl><span class=nx>If</span> <span class=nx>you</span> <span class=nx>are</span> <span class=nx>unable</span> <span class=nx>to</span> <span class=nx>answer</span> <span class=nx>the</span> <span class=nx>question</span><span class=p>,</span> <span class=nx>start</span> <span class=nx>your</span> <span class=nx>response</span> <span class=kd>with</span> <span class=nx>Sorry</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>Example</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>prompt</span><span class=o>:</span> <span class=s2>&#34;movies with brando&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>response</span><span class=o>:</span> <span class=p>[</span><span class=s2>&#34;The Godfather&#34;</span><span class=p>,</span> <span class=s2>&#34;The Godfather: Part II&#34;</span><span class=p>,</span> <span class=s2>&#34;Apocalypse Now&#34;</span><span class=p>,</span> <span class=s2>&#34;The Wild One&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>prompt</span><span class=o>:</span> <span class=nx>$</span><span class=p>{</span><span class=nx>searchTerm</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>response</span><span class=o>:</span>
+</span></span></code></pre></div><p>I&rsquo;m giving GPT an example of the kind of response I expect. In this case, I want it to create a valid array of movie titles.</p><p>With this change, I had the first working POC of my original idea! The last time experienced such a sensation of god-like empowerment might have been unlocking robots in <a href=https://www.factorio.com/>Factorio</a>.</p><p><img loading=lazy src=/images/moviesgpt/factorio-robots.png alt="Factorio Robots">
+<em>in Factorio, eventually you can have robots automatically build things based on blueprints</em></p><p>Whew, okay, great. Now what?</p><p>I showed the app to a friend, and he mentioned that it looked terrible on mobile. So I asked GPT-4 to &ldquo;change the CSS so the website works well on mobile phones.&rdquo; Lo and behold, after copying over the CSS directly, the site worked flawlessly on mobile. No futzing with media queries for me!</p><p>I also realized that I wanted to add star ratings to these movies to get a sense of their popularity. The TMDb API returns &ldquo;vote_ratings,&rdquo; which is a number from 0 to 10. I found the distribution of &ldquo;vote_ratings&rdquo; here: <a href=https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb>https://www.kaggle.com/code/erikbruin/movie-recommendation-systems-for-tmdb</a>.</p><p>Adding a stars component was also mostly copy/paste once I wrote the prompt:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>The movie database api returns a `vote_average` in the response. 
+</span></span><span class=line><span class=cl>I want a &#34;Stars&#34; component below each movie title that gives gives 
+</span></span><span class=line><span class=cl>the movie 1 star if `vote_average` is between 0 to 2, 2 stars if it 
+</span></span><span class=line><span class=cl>is between 2 to 4, etc. If a movie got one star, there should be a 
+</span></span><span class=line><span class=cl>single bright yellow star and four grey stars in the component.
 </span></span></code></pre></div><p>I also wanted something to happen when I clicked on the cards. Maybe show the movie summary, release date, etc. Here&rsquo;s the prompt:
-<img loading="lazy" src="/images/moviesgpt/moviesgpt-overlay.png" alt="Overlay"  />
-</p>
-<p>One thing that was bothering me in terms of practical usability was the lack of Rotten Tomatoes ratings. Often, that&rsquo;s the first thing I check when deciding whether to watch a given movie. Unfortunately, Rotten Tomatoes charges $60k/year (!!) for access to their API. Then I had the idea of asking GPT for the Rotten Tomatoes ratings. To my surprise, it does seem to have a sense for the ratings. Although they are not fully accurate, they seem to be generally in the right ballpark.</p>
-<p>I updated my prompt to generate a new data structure that includes the Rotten Tomatoes ratings:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Return a JSON object movie titles that best match this search term and their Rotten Tomatoes tomatometer score, 
-</span></span><span class="line"><span class="cl">ordered from most to least relevant. 
-</span></span><span class="line"><span class="cl">Get the most up to date and accurate Rotten Tomatoes tomatometer score.
-</span></span><span class="line"><span class="cl">Generate up to 12 titles.
-</span></span><span class="line"><span class="cl">If you are unable to answer the question, return a string that starts with Sorry.
-</span></span><span class="line"><span class="cl">The response must be a valid JSON.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Example:
-</span></span><span class="line"><span class="cl">prompt: &#34;movies with brando&#34;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">response: [
-</span></span><span class="line"><span class="cl">  { &#34;title&#34;: &#34;The Godfather&#34;, &#34;rottenTomatoesScore&#34;: 98 },
-</span></span><span class="line"><span class="cl">  { &#34;title&#34;: &#34;The Godfather: Part II&#34;, &#34;rottenTomatoesScore&#34;: 97 },
-</span></span><span class="line"><span class="cl">  { &#34;title&#34;: &#34;Apocalypse Now&#34;, &#34;rottenTomatoesScore&#34;: 96 },
-</span></span><span class="line"><span class="cl">  { &#34;title&#34;: &#34;The Wild One&#34;, &#34;rottenTomatoesScore&#34;: 85 }
-</span></span><span class="line"><span class="cl">]
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">prompt: ${searchTerm}
-</span></span><span class="line"><span class="cl">response:
-</span></span></code></pre></div><p>I also had GPT make me the new Rotten Tomatoes rating component:</p>
-<p><img loading="lazy" src="/images/moviesgpt/moviesgpt-rottentomatoes-prompt.png" alt="Rotten Tomatoes Prompt"  />
-</p>
-<p>Now I can safely avoid these movies!</p>
-<p><img loading="lazy" src="/images/moviesgpt/moviesgpt-rottentomatoes.png" alt="Rotten Tomatoes Rating"  />
-</p>
-<p>I was surprised by how well semantic search works out of the box with GPT. However, there are some limitations. One is that it only recognizes movies up to the date it was trained, which was late 2021. When asked about movies released after that, it simply responds that it doesn&rsquo;t know. This issue may be addressed by the Plugins that OpenAI announced, which would allow GPT to call live APIs to fetch real-time data. One could also probably create a fine-tuned model that is trained on more recent movies.</p>
-<p><img loading="lazy" src="/images/moviesgpt/moviesgpt-2022-movies.png" alt="Can&amp;rsquo;t find movies from 2022"  />
-
-<em>can&rsquo;t find movies from 2022</em></p>
-<p>I tried using <code>gpt-3.5-turbo</code>, but that model seemed to be much more prudish, refusing to respond to searches on movies deemed unseemly by the RLHF moderators. So I switched back to <code>text-davinci-003</code> for now.</p>
-<h3 id="limitations">Limitations<a hidden class="anchor" aria-hidden="true" href="#limitations">#</a></h3>
-<p>To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don&rsquo;t think someone without experience in React or Javascript would be able to replicate this. GPT still gets some things wrong, like telling me to use outdated libraries or generating wonky styles (<em>who wants a blue background on a header??</em>). But it&rsquo;s getting pretty close.</p>
-<p>In more ambitious projects, I&rsquo;ve noticed that GPT starts to &ldquo;forget&rdquo; the code it had previously suggested. So when I ask to change some function, it spits out a new version of the file that has a completely different implementation and method names. Maybe this is a result of the limited context window. I&rsquo;ve gotten around this by pasting in the code again and asking it to make the change given that context.</p>
-<h3 id="closing-thoughts">Closing Thoughts<a hidden class="anchor" aria-hidden="true" href="#closing-thoughts">#</a></h3>
-<p>I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn&rsquo;t do well with big picture decisions, but knows how to implement very well given the right direction. To be fair, I&rsquo;m not doing anything groundbreaking here. There must be tons of sites like this in the pretraining data, so it&rsquo;s relatively easy for GPT to generate the relevant code.</p>
-<p>It was also <em>much</em> easier to get into that elusive flow state while hacking this out. The dopamine hits from thinking of a feature and seeing it in action just kept coming, without the usual frustrations of not knowing how a particular function works and having to look it up. This makes coding <em>fun</em> again.</p>
-<p>It&rsquo;s clear that I am the bottleneck in this process. I&rsquo;m sitting here copying and pasting from GPT with some slight modifications. It seems like the natural progression here is to have GPT directly create the code based on my prompts. I imagine you could build a more advanced &ldquo;Create React App&rdquo; that generates and updates the app based on your prompts.</p>
-<p>I hope this inspires people to pursue building those apps they always wanted to build, but couldn&rsquo;t find time for. GPT still does not know <em>what</em> app to build and <em>why</em> it should build it, which is where we come in. Let a thousand flowers bloom!</p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://tenzinwangdhen.com/tags/gpt/">gpt</a></li>
-      <li><a href="https://tenzinwangdhen.com/tags/search/">search</a></li>
-      <li><a href="https://tenzinwangdhen.com/tags/project/">project</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="https://tenzinwangdhen.com/posts/google-innovators-dilemma/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Google&#39;s Innovator&#39;s Dilemma</span>
-  </a>
-  <a class="next" href="https://tenzinwangdhen.com/posts/book-review-peak/">
-    <span class="title">Next »</span>
-    <br>
-    <span>Book Review - Peak: Secrets from the New Science of Expertise</span>
-  </a>
-</nav>
-
-
-<div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on twitter"
-        href="https://twitter.com/intent/tweet/?text=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f&amp;hashtags=gpt%2csearch%2cproject">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f&amp;title=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;summary=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;source=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on reddit"
-        href="https://reddit.com/submit?url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f&title=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on facebook"
-        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on whatsapp"
-        href="https://api.whatsapp.com/send?text=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app%20-%20https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on telegram"
-        href="https://telegram.me/share/url?text=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f">
-        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-        </svg>
-    </a>
-</div>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2023 <a href="https://tenzinwangdhen.com">Tenzin&#39;s Blog</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+<img loading=lazy src=/images/moviesgpt/moviesgpt-overlay.png alt=Overlay></p><p>One thing that was bothering me in terms of practical usability was the lack of Rotten Tomatoes ratings. Often, that&rsquo;s the first thing I check when deciding whether to watch a given movie. Unfortunately, Rotten Tomatoes charges $60k/year (!!) for access to their API. Then I had the idea of asking GPT for the Rotten Tomatoes ratings. To my surprise, it does seem to have a sense for the ratings. Although they are not fully accurate, they seem to be generally in the right ballpark.</p><p>I updated my prompt to generate a new data structure that includes the Rotten Tomatoes ratings:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Return a JSON object movie titles that best match this search term and their Rotten Tomatoes tomatometer score, 
+</span></span><span class=line><span class=cl>ordered from most to least relevant. 
+</span></span><span class=line><span class=cl>Get the most up to date and accurate Rotten Tomatoes tomatometer score.
+</span></span><span class=line><span class=cl>Generate up to 12 titles.
+</span></span><span class=line><span class=cl>If you are unable to answer the question, return a string that starts with Sorry.
+</span></span><span class=line><span class=cl>The response must be a valid JSON.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Example:
+</span></span><span class=line><span class=cl>prompt: &#34;movies with brando&#34;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>response: [
+</span></span><span class=line><span class=cl>  { &#34;title&#34;: &#34;The Godfather&#34;, &#34;rottenTomatoesScore&#34;: 98 },
+</span></span><span class=line><span class=cl>  { &#34;title&#34;: &#34;The Godfather: Part II&#34;, &#34;rottenTomatoesScore&#34;: 97 },
+</span></span><span class=line><span class=cl>  { &#34;title&#34;: &#34;Apocalypse Now&#34;, &#34;rottenTomatoesScore&#34;: 96 },
+</span></span><span class=line><span class=cl>  { &#34;title&#34;: &#34;The Wild One&#34;, &#34;rottenTomatoesScore&#34;: 85 }
+</span></span><span class=line><span class=cl>]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>prompt: ${searchTerm}
+</span></span><span class=line><span class=cl>response:
+</span></span></code></pre></div><p>I also had GPT make me the new Rotten Tomatoes rating component:</p><p><img loading=lazy src=/images/moviesgpt/moviesgpt-rottentomatoes-prompt.png alt="Rotten Tomatoes Prompt"></p><p>Now I can safely avoid these movies!</p><p><img loading=lazy src=/images/moviesgpt/moviesgpt-rottentomatoes.png alt="Rotten Tomatoes Rating"></p><p>I was surprised by how well semantic search works out of the box with GPT. However, there are some limitations. One is that it only recognizes movies up to the date it was trained, which was late 2021. When asked about movies released after that, it simply responds that it doesn&rsquo;t know. This issue may be addressed by the Plugins that OpenAI announced, which would allow GPT to call live APIs to fetch real-time data. One could also probably create a fine-tuned model that is trained on more recent movies.</p><p><img loading=lazy src=/images/moviesgpt/moviesgpt-2022-movies.png alt="Can&amp;rsquo;t find movies from 2022">
+<em>can&rsquo;t find movies from 2022</em></p><p>I tried using <code>gpt-3.5-turbo</code>, but that model seemed to be much more prudish, refusing to respond to searches on movies deemed unseemly by the RLHF moderators. So I switched back to <code>text-davinci-003</code> for now.</p><h3 id=limitations>Limitations<a hidden class=anchor aria-hidden=true href=#limitations>#</a></h3><p>To be clear, I still had to do some coding to get the functionality and styling to match exactly what I wanted. I don&rsquo;t think someone without experience in React or Javascript would be able to replicate this. GPT still gets some things wrong, like telling me to use outdated libraries or generating wonky styles (<em>who wants a blue background on a header??</em>). But it&rsquo;s getting pretty close.</p><p>In more ambitious projects, I&rsquo;ve noticed that GPT starts to &ldquo;forget&rdquo; the code it had previously suggested. So when I ask to change some function, it spits out a new version of the file that has a completely different implementation and method names. Maybe this is a result of the limited context window. I&rsquo;ve gotten around this by pasting in the code again and asking it to make the change given that context.</p><h3 id=closing-thoughts>Closing Thoughts<a hidden class=anchor aria-hidden=true href=#closing-thoughts>#</a></h3><p>I got the feeling that I was a tech lead pair programming with a very knowledgeable junior engineer. It doesn&rsquo;t do well with big picture decisions, but knows how to implement very well given the right direction. To be fair, I&rsquo;m not doing anything groundbreaking here. There must be tons of sites like this in the pretraining data, so it&rsquo;s relatively easy for GPT to generate the relevant code.</p><p>It was also <em>much</em> easier to get into that elusive flow state while hacking this out. The dopamine hits from thinking of a feature and seeing it in action just kept coming, without the usual frustrations of not knowing how a particular function works and having to look it up. This makes coding <em>fun</em> again.</p><p>It&rsquo;s clear that I am the bottleneck in this process. I&rsquo;m sitting here copying and pasting from GPT with some slight modifications. It seems like the natural progression here is to have GPT directly create the code based on my prompts. I imagine you could build a more advanced &ldquo;Create React App&rdquo; that generates and updates the app based on your prompts.</p><p>I hope this inspires people to pursue building those apps they always wanted to build, but couldn&rsquo;t find time for. GPT still does not know <em>what</em> app to build and <em>why</em> it should build it, which is where we come in. Let a thousand flowers bloom!</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://tenzinwangdhen.com/tags/gpt/>gpt</a></li><li><a href=https://tenzinwangdhen.com/tags/search/>search</a></li><li><a href=https://tenzinwangdhen.com/tags/project/>project</a></li></ul><nav class=paginav><a class=prev href=https://tenzinwangdhen.com/posts/google-innovators-dilemma/><span class=title>« Prev</span><br><span>Google's Innovator's Dilemma</span></a>
+<a class=next href=https://tenzinwangdhen.com/posts/book-review-peak/><span class=title>Next »</span><br><span>Book Review - Peak: Secrets from the New Science of Expertise</span></a></nav><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on twitter" href="https://twitter.com/intent/tweet/?text=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f&amp;hashtags=gpt%2csearch%2cproject"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f&amp;title=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;summary=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;source=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on reddit" href="https://reddit.com/submit?url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f&title=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on whatsapp" href="https://api.whatsapp.com/send?text=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app%20-%20https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share GPT-4 made me a GPT powered movie search app on telegram" href="https://telegram.me/share/url?text=GPT-4%20made%20me%20a%20GPT%20powered%20movie%20search%20app&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fsemantic-movie-search-with-gpt%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></div></footer></article></main><footer class=footer><span>&copy; 2023 <a href=https://tenzinwangdhen.com>Tenzin's Blog</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

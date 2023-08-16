@@ -41,13 +41,18 @@ Another option would have been to buy a pre-built RTX 4090 rig, which would have
 
 ## Build Specs
 
-- CPU: Intel Core i9-13900K 3 GHz 24-Core
-- RAM: 4x 32gb DDR5-6400
-- GPU: Gigabyte RTX 4090
-- Power supply: 1000W Corsair modular power supply
-- Motherboard: MSI MPG Z790 EDGE Wifi
-- Case: Lian Li Dynamic EVO
-- SSD: 2TB Samsung 990 Pro
+- CPU: [Intel Core i9-13900K 3 GHz 24-Core](https://www.amazon.com/Intel-i9-13900K-Desktop-Processor-P-cores/dp/B0BCF54SR1?&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=9fc5ed7e41b2808f707bad241f5fb530&camp=1789&creative=9325)
+- RAM: [G.Skill Trident Z5 RGB Series (Intel XMP) 64GB (2 x 32GB)](https://www.amazon.com/dp/B0BJ7X9P1W?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=c3da632dd16c491527ee2c6c806e7a05&camp=1789&creative=9325)
+- GPU: [Gigabyte RTX 4090](https://www.amazon.com/gp/product/B0BGP8FGNZ/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=0ec651d21659ad51d237d9995e65d6e4&camp=1789&creative=9325)
+- Power supply: [1000W Corsair modular power supply](https://www.amazon.com/dp/B08R5PH1VY?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=d39c78ea7e05f2dc808c24230c263691&camp=1789&creative=9325)
+- Motherboard: [MSI MPG Z790 EDGE Wifi](https://www.amazon.com/gp/product/B0BL92SPJQ/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=72c7f0e89bbfa45d8e7fdaa4af94c362&camp=1789&creative=9325)
+- Case: [Lian Li Dynamic EVO](https://www.amazon.com/dp/B09SFFSC9D?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=bd7ac6945b01e509bf68cb3d611de724&camp=1789&creative=9325)
+- Case fans: [Lian Li UNI FAN SL-INFINITY 120 RGB Triple Pack Black](https://www.amazon.com/dp/B0B4P5S94P?ref=ppx_yo2ov_dt_b_product_details&th=1&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=a8001842d97521043abe1c68397b0315&camp=1789&creative=9325)
+- SSD: [2TB Samsung 990 Pro](https://www.amazon.com/dp/B0BHJJ9Y77?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=9564805d8e0c5b498c0a0ec38d21e3d0&camp=1789&creative=9325)
+- Thermal paste: [Thermal Grizzly Kryonaut (1 gram)](https://www.amazon.com/gp/product/B011F7W3LU/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=974247ac9fe9963e2546aa4c407a9ffb&camp=1789&creative=9325)
+- Magnetic screw driver: [Spec Ops Tools Phillips Screwdriver, 2 x 4", Magnetic Tip](https://www.amazon.com/dp/B089RJFL3S?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=5641b92c70dd777cce7867a8b668963f&camp=1789&creative=9325)
+- RGB motherboard connector: [Lian Li Strimer Plus V2 24 Pin](https://www.amazon.com/dp/B09ZPJDFJ2?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=9082025aa02c05d07314c4bac67a3aed&camp=1789&creative=9325)
+- USB Header splitter: [9pin USB Header Male 1 to 2 Female Extension Splitter Cable Connector Adapter](https://www.amazon.com/dp/B076Q8685Y?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=1827901921d81121a6db59766c9e8581&camp=1789&creative=9325)
 
 Parts list: https://pcpartpicker.com/b/rZqp99
 
@@ -137,7 +142,7 @@ I had to look up how to remove the cover on the motherboard for the SSD slot, bu
 
 This is where things got somewhat hairy. The Lian Li case instructions are not super clear, and there are a million parts to deal with. It really helps here to stay organized and know where you place every screw. Use a bowl for loose screws. Thankfully there are a few good videos on my exact case, this one was pretty good: https://www.youtube.com/watch?v=2v2fd1nrnkY
 
-_Important_: when setting up the case is that most CPU coolers require attaching a plate to the *back* of the motherboard. Do this before screwing the motherboard into the case to avoid any unnecessary backtrack.
+_Important_: Most CPU coolers require attaching a plate to the *back* of the motherboard. Do this before screwing the motherboard into the case to avoid any unnecessary backtrack.
 
 Once the case was prepped, I screwed the motherboard into place.
 
@@ -145,7 +150,7 @@ Once the case was prepped, I screwed the motherboard into place.
 
 ### Case Fans
 
-This probably took the most time. I had to spend quite a bit of time thinking through fan placement. I had ordered 9 Lian Li SL-Infinity fans, by far the most case fans I've ever put into a PC. There's some [theory](https://www.tomshardware.com/how-to/set-up-pc-case-fans-for-airflow-and-performance) on the best fan placement to reduce dust build up and improve airflow. I ended up going with three intake on the bottom and one in the back, and two exhaust on the side and three on top.
+This probably took the most time. I had to spend quite a bit of time thinking through fan placement. I had ordered 10 Lian Li SL-Infinity fans, by far the most case fans I've ever put into a PC. There's some [theory](https://www.tomshardware.com/how-to/set-up-pc-case-fans-for-airflow-and-performance) on the best fan placement to reduce dust build up and improve airflow. I ended up going with three intake on the bottom and three on the side, and three exhaust on the top and on in the back. I originally had the reverse setup, but the rear intake would just suck in hot air from the CPU. I miss out on the cool RGB effect of the fans on the side, but I think it's worth it for the improved airflow.
 
 The nice thing about the Lian Li fans was that they daisy chain pretty easily, so a set of three fans could be powered by a single cable. That cable then connects to a central hub that can be connected to up to four sets of fans, which is powered by a single cable from the power supply. The one issue was I had a hard time figuring out which side was the face (intake). It turned out that in my version, the mirrored side is the face. Lots of screwing fans in and out involved.
 
@@ -192,6 +197,9 @@ Thankfully nothing blew up when I flipped the switch. I made sure that the compu
 Managing the cables turned out to be relatively straightforward with the Lian Li case. All cables could be hidden at the back and fed through rubberized slots around the motherboard. After organizing the mess, a provided plate neatly covered the center gap in the case.
 
 ![Cable Management](/images/pc-build/cable-management.png)
+
+### More pretty RGB
+After the build was complete, the RBG bug got me and I decided to get an [RBG motherboard connector](https://www.amazon.com/dp/B09ZPJDFJ2?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=9082025aa02c05d07314c4bac67a3aed&camp=1789&creative=9325). This required a [USB connector splitter](https://www.amazon.com/dp/B076Q8685Y?psc=1&ref=ppx_yo2ov_dt_b_product_details&_encoding=UTF8&tag=amazongptsear-20&linkCode=ur2&linkId=1827901921d81121a6db59766c9e8581&camp=1789&creative=9325), since I was out of USB slots on the motherboard. I also needed another Lian Li controller hub since I'd used up the four on the current controller. The result is a programmable RBG motherboard connector. This does absolutely nothing but feed my vanity and was cool for about five minutes. Pretty lights!
 
 ### Installing Windows and Drivers
 

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>GPT Can&#39;t Think for You | Tenzin&#39;s Blog</title>
+<meta name="keywords" content="ai, opinion, gpt, tech">
+<meta name="description" content="Limitations of LLMs in complex coding tasks and their current shortfall in matching human expertise.">
+<meta name="author" content="Tenzin Wangdhen">
+<link rel="canonical" href="https://tenzinwangdhen.com/posts/gpt-cant-think-for-you/">
+<meta name="google-site-verification" content="XYZabc">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.1443025edf561866ac87002e4fa1fcc308bee7d2cbae932ea8cd31d7383411f4.css" integrity="sha256-FEMCXt9WGGashwAuT6H8wwi&#43;59LLrpMuqM0x1zg0EfQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LK2EC2CML"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1LK2EC2CML', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="GPT Can&#39;t Think for You" />
+<meta property="og:description" content="Limitations of LLMs in complex coding tasks and their current shortfall in matching human expertise." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://tenzinwangdhen.com/posts/gpt-cant-think-for-you/" /><meta property="og:image" content="https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-17T23:44:25-08:00" />
+<meta property="article:modified_time" content="2024-02-17T23:44:25-08:00" /><meta property="og:site_name" content="Tenzin&#39;s Blog" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://tenzinwangdhen.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="GPT Can&#39;t Think for You"/>
+<meta name="twitter:description" content="Limitations of LLMs in complex coding tasks and their current shortfall in matching human expertise."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://tenzinwangdhen.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "GPT Can't Think for You",
+      "item": "https://tenzinwangdhen.com/posts/gpt-cant-think-for-you/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "GPT Can't Think for You",
+  "name": "GPT Can\u0027t Think for You",
+  "description": "Limitations of LLMs in complex coding tasks and their current shortfall in matching human expertise.",
+  "keywords": [
+    "ai", "opinion", "gpt", "tech"
+  ],
+  "articleBody": "We’ve lived with like ChatGPT for over a year now. Last year seemed to be the height of the hype cycle, at least for me. It felt like everyone, from friends to Uber drivers, was excitedly discussing the potential of this groundbreaking technology. However, as often happens with new technological advancements, the initial excitement has dimmed somewhat when faced with the reality of day-to-day use. The trough of disillusionment is real. In this article, I’ll mostly discuss the limitations of LLMs in technical tasks, though I believe these limitations apply to any sufficiently complex domain.\nWhat I anticipated would be a significant leap in productivity has turned out to be more of a gradual step forward. As a developer, a substantial portion of my work involves coding. For new projects or when crafting quick scripts in bash or Python, GPT-4, the current best LLM, proves to be an invaluable partner. However, when it comes to refactoring functions in a vast, monolithic codebase or debugging complex performance issues in large distributed systems, GPT’s assistance often becomes superficial, providing broad, generic advice rather than actionable solutions, especially without inputting an extensive amount of code. Not to mention the risk of hallucinations that can lead to calling imaginary libraries or functions that don’t exist.\nSource: reddit\nThe issue of context window size is a significant barrier. Ideally, if it were possible to input an entire million-line codebase into the context window, GPT might offer more useful insights. However, research has shown that LLM performance decreases as the context size grows, especially in the middle of the window.\nThis presents a challenge for troubleshooting large systems, which would require analyzing trends across numerous dashboards and millions of system logs—a task far beyond the current capabilities of LLMs, given their limited context window compared to the virtually unlimited, albeit slower, processing capacity of the human brain.\nRetrieval-Augmented Generation (RAG) might offer some solutions, but its effectiveness heavily depends on whether it can locate the correct code blocks to put into context. This becomes challenging when the code lacks clear explanations or uses poorly named functions. My experiences with GitHub Copilot and Sourcegraph’s Cody have been mixed; Cody tends to identify relevant files more effectively but often overlooks critical code blocks and files, while Copilot Chat appears limited to analyzing snippets from a single file, which is hardly helpful. GPT-4 does a decent job if you’ve pasted in enough of your code in the chat, but this is impractical on large codebases, or if you don’t know what code would be relevant context to answer your question. Efforts to expand the context window to accommodate entire codebases efficiently are worth monitoring.\nAgent-based frameworks also show potential. Unlike the traditional question-and-answer model, agent frameworks like AutoGPT set a task or goal and automatically break it down into subtasks, utilizing the necessary tools (such as calculators, Python scripts, or searches) to achieve the objective. An example of this approach is Grit, which aims to tackle the refactoring challenge using agents. However, this technology is still in its infancy.\nAnother problem with LLMs, particularly advanced ones like GPT-4, is their latency. Generating a response can take over 30 seconds, depending on the size of the input and desired output, disrupting many users’ flow state. For specific needs, like looking up a library method, I still prefer Google for its near-instant results.\nAs with any hype cycle, the focus tends to be on the technology’s potential rather than its current state. Remember how we thought bitcoin would imminently take over the banking system? With this latest AI summer, it feels to many like Artificial General Intelligence (AGI) is just around the corner, and we can all lay back and let the machines do the work for us (or kill us all, if that’s your political bent). However, we seem to be approaching a point of diminishing returns with the current transformer architecture, with increases in number of parameters resulting in sub-linear increases in performance.\nLLMs are far from being able to replace a colleague who possesses years of nuanced knowledge about your code base and systems, someone who can immediately identify why a seemingly minor commit led to doubled latency across all your microservices. Organizations that adopt coding assistants without implementing proper guardrails and training might encounter decreased code quality. This issue arises because, while these tools make writing code easier, they do not necessarily facilitate its refactoring.\nRelying too heavily on it for answers can also impede knowledge acquisition. It is increasingly tempting for engineers to not learn esoteric concepts when they could so easily just ask GPT, but they will almost certainly get burnt by hallucinated responses or run into roadblocks during an incident due to the aforementioned limitations with LLMs. To paraphrase Charlie Munger, knowledge and concepts stick only when you’ve put in the effort to reach for it. We still need to increase our own circle of competence.\nAs LLMs continue to evolve, some of my concerns might soon become obsolete. A valid rebuttal to my critique could be that we are, once again, shifting the goalposts regarding our expectations from AI. LLMs are now capable of performing tasks that were deemed impossible just a few years back, yet our focus remains on their limitations. The rate of progress in AI capabilities is exponential, with each new advancement building upon the last. AI will inevitably become increasingly adept at the ‘how’ of implementation. The ‘what’ to build and the ‘why’ will likely remain human domains for a considerable time as these questions require a deep understanding of the problem domain, the current state of the art, and a certain amount of creativity. The equation changes entirely if and when we achieve superintelligence. By then, hopefully, we will pursue learning and growth for our own benefit and interest, rather than out of necessity.\nI am far from being a luddite and believe in leveraging technological advancements to their fullest. When used appropriately, a symbiotic relationship between humans and AI can be incredibly powerful, surpassing the capabilities of either on their own. An AGI could potentially serve as the ultimate personalized teacher, knowing precisely where a student is in their learning journey and how to challenge them appropriately. However, it’s crucial to remember that an AI’s understanding is not a substitute for our own. Until advancements like Neuralink evolve to enhance our cognitive processes directly, the responsibility for personal growth and knowledge acquisition lies with us.\n",
+  "wordCount" : "1078",
+  "inLanguage": "en",
+  "datePublished": "2024-02-17T23:44:25-08:00",
+  "dateModified": "2024-02-17T23:44:25-08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Tenzin Wangdhen"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tenzinwangdhen.com/posts/gpt-cant-think-for-you/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tenzin's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tenzinwangdhen.com/%3Clink%20/%20abs%20url%3E"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://tenzinwangdhen.com" accesskey="h" title="Tenzin&#39;s Blog (Alt + H)">
+                <img src="https://tenzinwangdhen.com/apple-touch-icon.png" alt="" aria-label="logo"
+                    height="35">Tenzin&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://tenzinwangdhen.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://tenzinwangdhen.com/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://tenzinwangdhen.com/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://tenzinwangdhen.com">Home</a>&nbsp;»&nbsp;<a href="https://tenzinwangdhen.com/posts/">Posts</a></div>
+    <h1 class="post-title">
+      GPT Can&#39;t Think for You
+    </h1>
+    <div class="post-description">
+      Limitations of LLMs in complex coding tasks and their current shortfall in matching human expertise.
+    </div>
+    <div class="post-meta"><span title='2024-02-17 23:44:25 -0800 PST'>February 17, 2024</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1078 words&nbsp;·&nbsp;Tenzin Wangdhen&nbsp;|&nbsp;<a href="https://github.com/sinzin91/tesseract-blog/blob/master/content/posts/gpt-cant-think-for-you.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+
+  <div class="post-content"><p>We&rsquo;ve lived with like ChatGPT for over a year now. Last year seemed to be the height of the hype cycle, at least for me. It felt like everyone, from friends to Uber drivers, was excitedly discussing the potential of this groundbreaking technology. However, as often happens with new technological advancements, the initial excitement has dimmed somewhat when faced with the reality of day-to-day use. The trough of disillusionment is real. In this article, I&rsquo;ll mostly discuss the limitations of LLMs in technical tasks, though I believe these limitations apply to any sufficiently complex domain.</p>
+<p>What I anticipated would be a significant leap in productivity has turned out to be more of a gradual step forward. As a developer, a substantial portion of my work involves coding. For new projects or when crafting quick scripts in bash or Python, GPT-4, the current best LLM, proves to be an invaluable partner. However, when it comes to refactoring functions in a vast, monolithic codebase or debugging complex performance issues in large distributed systems, GPT&rsquo;s assistance often becomes superficial, providing broad, generic advice rather than actionable solutions, especially without inputting an extensive amount of code. Not to mention the risk of hallucinations that can lead to calling imaginary libraries or functions that don&rsquo;t exist.</p>
+<p><img loading="lazy" src="/images/no-elephant.png" alt="No Elephant"  />
+</p>
+<p><em>Source: <a href="https://www.reddit.com/r/OpenAI/comments/1amgtk3/attention_is_all_you_need/">reddit</a></em></p>
+<p>The issue of context window size is a significant barrier. Ideally, if it were possible to input an entire million-line codebase into the context window, GPT might offer more useful insights. However, research has shown that LLM performance decreases as the context size grows, <a href="https://arxiv.org/abs/2307.03172">especially in the middle of the window</a>.</p>
+<p>This presents a challenge for troubleshooting large systems, which would require analyzing trends across numerous dashboards and millions of system logs—a task far beyond the current capabilities of LLMs, given their limited context window compared to the virtually unlimited, albeit slower, processing capacity of the human brain.</p>
+<p>Retrieval-Augmented Generation (RAG) might offer some solutions, but its effectiveness heavily depends on whether it can locate the correct code blocks to put into context. This becomes challenging when the code lacks clear explanations or uses poorly named functions. My experiences with GitHub Copilot and Sourcegraph&rsquo;s Cody have been mixed; Cody tends to identify relevant files more effectively but often overlooks critical code blocks and files, while Copilot Chat appears limited to analyzing snippets from a single file, which is hardly helpful. GPT-4 does a decent job if you&rsquo;ve pasted in enough of your code in the chat, but this is impractical on large codebases, or if you don&rsquo;t know what code would be relevant context to answer your question. <a href="https://magic.dev/blog/ltm-1">Efforts</a> to expand the context window to accommodate entire codebases efficiently are worth monitoring.</p>
+<p>Agent-based frameworks also show potential. Unlike the traditional question-and-answer model, agent frameworks like AutoGPT set a task or goal and automatically break it down into subtasks, utilizing the necessary tools (such as calculators, Python scripts, or searches) to achieve the objective. An example of this approach is <a href="%5Bhttps://www.grit.io/%5D(https://www.grit.io/)">Grit</a>, which aims to tackle the refactoring challenge using agents. However, this technology is still in its infancy.</p>
+<p>Another problem with LLMs, particularly advanced ones like GPT-4, is their latency. Generating a response can take over 30 seconds, depending on the size of the input and desired output, disrupting many users&rsquo; flow state. For specific needs, like looking up a library method, I still prefer Google for its near-instant results.</p>
+<p>As with any hype cycle, the focus tends to be on the technology&rsquo;s potential rather than its current state. Remember how we thought bitcoin would imminently take over the banking system? With this latest AI summer, it feels to many like Artificial General Intelligence (AGI) is just around the corner, and we can all lay back and let the machines do the work for us (or kill us all, if that&rsquo;s your political bent). However, we seem to be approaching a point of diminishing returns with the current transformer architecture, with increases in number of parameters resulting in sub-linear increases in performance.</p>
+<p>LLMs are far from being able to replace a colleague who possesses years of nuanced knowledge about your code base and systems, someone who can immediately identify why a seemingly minor commit led to doubled latency across all your microservices. Organizations that adopt coding assistants without implementing proper guardrails and training might encounter <a href="https://visualstudiomagazine.com/articles/2024/01/25/copilot-research.aspx">decreased code quality</a>. This issue arises because, while these tools make writing code easier, they do not necessarily facilitate its refactoring.</p>
+<p>Relying too heavily on it for answers can also impede knowledge acquisition. It is increasingly tempting for engineers to not learn esoteric concepts when they could so easily just ask GPT, but they will almost certainly get burnt by hallucinated responses or run into roadblocks during an incident due to the aforementioned limitations with LLMs.  To paraphrase Charlie Munger, knowledge and concepts stick only when you&rsquo;ve put in the effort to reach for it. We still need to increase our own circle of competence.</p>
+<p>As LLMs continue to evolve, some of my concerns might soon become obsolete. A valid rebuttal to my critique could be that we are, once again, shifting the goalposts regarding our expectations from AI. LLMs are now capable of performing tasks that were deemed impossible just a few years back, yet our focus remains on their limitations. The rate of progress in AI capabilities is exponential, with each new advancement building upon the last. AI will inevitably become increasingly adept at the &lsquo;how&rsquo; of implementation. The &lsquo;what&rsquo; to build and the &lsquo;why&rsquo; will likely remain human domains for a considerable time as these questions require a deep understanding of the problem domain, the current state of the art, and a certain amount of creativity. The equation changes entirely if and when we achieve superintelligence. By then, hopefully, we will pursue learning and growth for our own benefit and interest, rather than out of necessity.</p>
+<p>I am far from being a luddite and believe in leveraging technological advancements to their fullest. When used appropriately, a symbiotic relationship between humans and AI can be incredibly powerful, surpassing the capabilities of either on their own. An AGI could potentially serve as the ultimate personalized teacher, knowing precisely where a student is in their learning journey and how to challenge them appropriately. However, it&rsquo;s crucial to remember that an AI&rsquo;s understanding is not a substitute for our own. Until advancements like Neuralink evolve to enhance our cognitive processes directly, the responsibility for personal growth and knowledge acquisition lies with us.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://tenzinwangdhen.com/tags/ai/">ai</a></li>
+      <li><a href="https://tenzinwangdhen.com/tags/opinion/">opinion</a></li>
+      <li><a href="https://tenzinwangdhen.com/tags/gpt/">gpt</a></li>
+      <li><a href="https://tenzinwangdhen.com/tags/tech/">tech</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://tenzinwangdhen.com/posts/the-power-law/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Book Review - The Power Law</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share GPT Can&#39;t Think for You on x"
+            href="https://x.com/intent/tweet/?text=GPT%20Can%27t%20Think%20for%20You&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f&amp;hashtags=ai%2copinion%2cgpt%2ctech">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share GPT Can&#39;t Think for You on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f&amp;title=GPT%20Can%27t%20Think%20for%20You&amp;summary=GPT%20Can%27t%20Think%20for%20You&amp;source=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share GPT Can&#39;t Think for You on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f&title=GPT%20Can%27t%20Think%20for%20You">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share GPT Can&#39;t Think for You on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share GPT Can&#39;t Think for You on whatsapp"
+            href="https://api.whatsapp.com/send?text=GPT%20Can%27t%20Think%20for%20You%20-%20https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share GPT Can&#39;t Think for You on telegram"
+            href="https://telegram.me/share/url?text=GPT%20Can%27t%20Think%20for%20You&amp;url=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share GPT Can&#39;t Think for You on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=GPT%20Can%27t%20Think%20for%20You&u=https%3a%2f%2ftenzinwangdhen.com%2fposts%2fgpt-cant-think-for-you%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://tenzinwangdhen.com">Tenzin&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

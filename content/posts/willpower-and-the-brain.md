@@ -1,7 +1,7 @@
 ---
 title: "Willpower and the Brain"
 date: 2024-04-07T20:26:35-07:00
-draft: true
+draft: false
 tags: ["neuroscience", "science", "growth", "habits"]
 author: "Tenzin Wangdhen"
 showToc: true

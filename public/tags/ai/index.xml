@@ -11,7 +11,6 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-<<<<<<< HEAD
     <lastBuildDate>Sat, 17 Feb 2024 23:44:25 -0800</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GPT Can&#39;t Think for You</title>
@@ -20,8 +19,8 @@
       
       <guid>https://tenzinwangdhen.com/posts/gpt-cant-think-for-you/</guid>
       <description>Limitations of LLMs in complex coding tasks and their current shortfall in matching human expertise.</description>
-=======
-    <lastBuildDate>Tue, 12 Dec 2023 21:21:58 -0800</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    </item>
+    
     <item>
       <title>Book Review - The Coming Wave</title>
       <link>https://tenzinwangdhen.com/posts/the-coming-wave/</link>
@@ -29,7 +28,6 @@
       
       <guid>https://tenzinwangdhen.com/posts/the-coming-wave/</guid>
       <description>benefits, pitfalls and recommendations on emerging technologies</description>
->>>>>>> bc748bdf4d69ef0e3e2aa83c39ec0a671b139d42
     </item>
     
     <item>

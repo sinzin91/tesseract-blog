@@ -11,26 +11,17 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-<<<<<<< HEAD
     <lastBuildDate>Sat, 17 Feb 2024 23:44:25 -0800</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ai</title>
       <link>https://tenzinwangdhen.com/tags/ai/</link>
       <pubDate>Sat, 17 Feb 2024 23:44:25 -0800</pubDate>
-=======
-    <lastBuildDate>Tue, 12 Dec 2023 21:21:58 -0800</lastBuildDate><atom:link href="https://tenzinwangdhen.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ai</title>
-      <link>https://tenzinwangdhen.com/tags/ai/</link>
-      <pubDate>Tue, 12 Dec 2023 21:21:58 -0800</pubDate>
->>>>>>> bc748bdf4d69ef0e3e2aa83c39ec0a671b139d42
       
       <guid>https://tenzinwangdhen.com/tags/ai/</guid>
       <description></description>
     </item>
     
     <item>
-<<<<<<< HEAD
       <title>gpt</title>
       <link>https://tenzinwangdhen.com/tags/gpt/</link>
       <pubDate>Sat, 17 Feb 2024 23:44:25 -0800</pubDate>
@@ -60,25 +51,13 @@
     <item>
       <title>books</title>
       <link>https://tenzinwangdhen.com/tags/books/</link>
-      <pubDate>Sat, 23 Sep 2023 14:57:44 +0200</pubDate>
-=======
-      <title>books</title>
-      <link>https://tenzinwangdhen.com/tags/books/</link>
       <pubDate>Tue, 12 Dec 2023 21:21:58 -0800</pubDate>
->>>>>>> bc748bdf4d69ef0e3e2aa83c39ec0a671b139d42
       
       <guid>https://tenzinwangdhen.com/tags/books/</guid>
       <description></description>
     </item>
     
     <item>
-<<<<<<< HEAD
-      <title>venture capital</title>
-      <link>https://tenzinwangdhen.com/tags/venture-capital/</link>
-      <pubDate>Sat, 23 Sep 2023 14:57:44 +0200</pubDate>
-      
-      <guid>https://tenzinwangdhen.com/tags/venture-capital/</guid>
-=======
       <title>futurism</title>
       <link>https://tenzinwangdhen.com/tags/futurism/</link>
       <pubDate>Tue, 12 Dec 2023 21:21:58 -0800</pubDate>
@@ -88,12 +67,11 @@
     </item>
     
     <item>
-      <title>tech</title>
-      <link>https://tenzinwangdhen.com/tags/tech/</link>
-      <pubDate>Tue, 12 Dec 2023 21:21:58 -0800</pubDate>
+      <title>venture capital</title>
+      <link>https://tenzinwangdhen.com/tags/venture-capital/</link>
+      <pubDate>Sat, 23 Sep 2023 14:57:44 +0200</pubDate>
       
-      <guid>https://tenzinwangdhen.com/tags/tech/</guid>
->>>>>>> bc748bdf4d69ef0e3e2aa83c39ec0a671b139d42
+      <guid>https://tenzinwangdhen.com/tags/venture-capital/</guid>
       <description></description>
     </item>
     

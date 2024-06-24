@@ -91,9 +91,9 @@ Using this technique, you can more easily recall each item in the list, as well 
 
 I've encountered several challenges in fully utilizing memory palaces. One significant issue is the surprising difficulty in creating large memory palaces. I've attempted to construct one based on my usual neighborhood walk. While it's easy to recall major landmarks like the park or ice cream shop, retaining more objects requires remembering finer details. I find myself questioning: Did the house with wooden shingles precede or follow the Victorian? How many houses stood between the park and Lombard Street? Perhaps the ancients simply possessed a superior memory for spatial details compared to mine.
 
-Another challenge is that memory palaces resemble linked list data structures. In linked lists, each element contains a pointer to the next element in sequential order. This structure has several drawbacks, including the requirement for sequential access, lack of random access, and inefficient insertion and deletion in the middle of the list. Similarly, if you forget a location in your memory palace, recalling the rest of the list becomes more challenging. Retrieving a memory from the middle of the palace might necessitate starting from the beginning, slowing down the recall process. Moreover, most information I want to remember doesn't require exact sequential order.
+Another challenge is that memory palaces resemble linked list data structures. In linked lists, each element contains a pointer to the next element in sequential order. This structure has several drawbacks, including the requirement for sequential access and inefficient insertion and deletion in the middle of the list. Similarly, if you forget a location in your memory palace, recalling the rest of the list becomes more challenging. Retrieving a memory from the middle of the palace might necessitate starting from the beginning, slowing down the recall process. If you realize you need to add an item in the middle of your palace, you might need to shift all of the following items in your palace. Moreover, most information I want to remember doesn't require exact sequential order.
 
-I've found memory palaces useful for various purposes, such as recalling the main points of a presentation or managing task lists associated with specific responsibilities. For instance, I utilize my office building as a memory palace for work-related tasks, and the route to the grocery store for shopping lists.
+I've found memory palaces useful for various purposes, such as recalling the main points of a presentation or managing task lists associated with specific responsibilities. For instance, I use my office building as a memory palace for work-related tasks, and the route to the grocery store for shopping lists.
 
 Here's a more detailed guide on memory palaces if you want to explore further: https://artofmemory.com/blog/how-to-build-a-memory-palace/
 
@@ -112,6 +112,7 @@ Each digit maps to phonetic sounds as follows:
   - 7 -> K
   - 8 -> F, V
   - 9 -> P, B
+
 The [Wikipedia page](https://en.wikipedia.org/wiki/Mnemonic_major_system) has a more comprehensive description.
 
 Using this mapping, you can transform numbers like 31415 into vivid imagery: MaT (31) on a RaT (41) chased by an eeL (5). As with the memory palace technique, the more unusual the imagery, the more effective it is.

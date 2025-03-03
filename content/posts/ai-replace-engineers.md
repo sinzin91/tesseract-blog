@@ -1,7 +1,7 @@
 ---
 title: "Will AI Displace Software Engineers?"
 date: 2025-02-27T23:35:28-06:00
-draft: true
+draft: false
 tags: ["ai", "economics"]
 author: "Tenzin Wangdhen"
 showToc: true

@@ -74,7 +74,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: SF based software engineer. Sharing my thoughts on software, AI, and books.
+    Content: Professional agent herder. Currently building <a href="https://noc0.dev">noc0.dev</a>. Sharing thoughts on AI and books.
 
   socialIcons:
     - name: github

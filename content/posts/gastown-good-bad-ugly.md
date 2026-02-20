@@ -156,7 +156,7 @@ It is much too heavy for some projects. For something like “build a CRUD app�
 
 My dream setup is the agents working autonomously and pinging me when they need direction, not me constantly prodding them to move along. Gas town showed me that is possible, but I still needed to prod the mayor(s) and it asked for too much in return.
 
-I wanted the same parallelism and “mayor driven” workflow, but with less complexity and overhead — so I started borrowing the best ideas rather than adopting the whole system.
+I wanted the same parallelism and “mayor driven” workflow, but with less complexity and overhead. So I started borrowing the best ideas rather than adopting the whole system.
 
 ---
 
@@ -168,7 +168,7 @@ If you're already running 5-10+ coding agents regularly, are comfortable letting
 
 I’d skip it if you need fine-grained control and lots of back-and-forth with your agents, yolo mode makes you nervous, or are looking for *less* complexity. 
 
-For all its chaos, Gas Town showed me what’s coming. I didn’t become a citizen, but I did leave with a new framework for managing teams of agents—and I think that mental model is going to matter a lot this year.
+For all its chaos, Gas Town showed me what’s coming. I didn’t become a citizen, but I did leave with a new framework for managing teams of agents. I think that mental model is going to matter a lot this year.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Gas Town: The Good, The Bad, The Ugly"
 date: 2026-02-19T12:00:00-08:00
-draft: true
+draft: false
 # weight: 1
 tags: ["ai", "automation", "tech", "opinion"]
 author: "Tenzin Wangdhen"

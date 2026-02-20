@@ -194,3 +194,7 @@ For completeness, here's the rest of the Mad Max vocabulary:
 - **Seance** — Talk to a worker's previous session (gt seance). Uses Claude Code's /resume to revive dead sessions and recover lost context.
 - **Patrol** — A recurring workflow loop run by the Deacon and Witness. A well-defined sequence of checks encoded as linked beads.
 - **Boot** 🐕 — A special Dog awakened every 5 minutes to check on the Deacon. Decides if the Deacon needs a heartbeat, nudge, restart, or to be left alone.
+
+---
+
+*Thanks to [Dan Shapiro](http://danshapiro.com/) and Nico Pinto for reading drafts of this post.*

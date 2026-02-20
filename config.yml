@@ -1,6 +1,7 @@
 baseURL: "https://tenzinwangdhen.com"
 title: Tenzin's Blog
-paginate: 5
+pagination:
+  pagerSize: 10
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -45,11 +46,11 @@ params:
   assets:
     disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
+    favicon: "/favicon.png"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    safari_pinned_tab: "/favicon.png"
 
   label:
     text: "Tenzin's Blog"
@@ -74,6 +75,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
+    ImageUrl: "/images/profile.png"
     Content: Professional agent herder. Currently building <a href="https://noc0.dev">noc0.dev</a>. Sharing thoughts on AI and books.
 
   socialIcons:
@@ -125,6 +127,9 @@ menu:
 # controls the code syntax highlighter
 pygmentsUseClasses: true
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     noClasses: false
     anchorLineNos: true
